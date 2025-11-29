@@ -1,511 +1,332 @@
-\textbackslash documentclass{[}12pt, a4paper{]}\{article\}
-\textbackslash usepackage{[}utf8{]}\{inputenc\}
-\textbackslash usepackage{[}T1{]}\{fontenc\}
-\textbackslash usepackage{[}french{]}\{babel\}
-\textbackslash usepackage\{amsmath, amssymb, amsfonts\}
-\textbackslash usepackage\{physics\} \% Provides \textbackslash grad,
-\textbackslash div, \textbackslash rot, \textbackslash laplacian,
-\textbackslash vec \textbackslash usepackage\{geometry\}
-\textbackslash usepackage\{siunitx\} \% For units
+\documentclass[11pt,a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[french]{babel}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{physics} % For vector notations (div, rot, grad, vec, pdv, dd)
+\usepackage{esvect}  % For better looking vectors if needed (optional, physics provides \vec)
+\usepackage{enumerate} % For custom list numbering
+\usepackage{siunitx} % For units, good practice
+\usepackage{geometry} % For page margins
+\geometry{a4paper, margin=1in}
 
-\textbackslash geometry\{a4paper, margin=1in\}
+% Custom command for differential d, to make it upright in math mode
+\renewcommand{\dd}[1]{\ensuremath{\mathrm{d}#1}}
 
-\textbackslash begin\{document\}
+\begin{document}
 
-\textbackslash begin\{center\} \textbackslash vspace*\{0.5cm\}
-\textbackslash textbf\{\textbackslash Large Correction de Colle :
-Électromagnétisme et Équilibres Chimiques\}
-\textbackslash vspace*\{0.5cm\} \textbackslash end\{center\}
+\section*{Programme de Colle : Physique - Chimie}
+\subsection*{Semaine du 17 au 22 novembre}
 
-\textbackslash section\{Réponses aux questions de cours\}
+\subsection*{Remarques Préliminaires}
+Le programme couvre des aspects fondamentaux de l'électromagnétisme (électrostatique et magnétostatique) ainsi que des notions d'équilibres chimiques. Une attention particulière doit être portée à la maîtrise des démonstrations des théorèmes intégraux à partir des équations de Maxwell locales, ainsi qu'à l'application rigoureuse des théorèmes de Gauss et d'Ampère, notamment concernant les symétries et l'orientation des surfaces et contours.
 
-\textbackslash subsection\{Question 1: Démonstration des théorèmes de
-Gauss et d\textquotesingle Ampère\}
+\section{Réponses aux questions de cours}
 
-\textbackslash subsubsection\{Démonstration du Théorème de Gauss\} Le
-théorème de Gauss relie le flux du champ électrostatique à travers une
-surface fermée aux charges internes. \textbackslash begin\{enumerate\}
-\textbackslash item \textbackslash textbf\{Forme locale de
-l\textquotesingle équation de Maxwell-Gauss :\} En électrostatique,
-l\textquotesingle équation de Maxwell-Gauss s\textquotesingle écrit sous
-sa forme locale (ou différentielle) : \$\textbackslash div
-\textbackslash vec\{E\} =
-\textbackslash frac\{\textbackslash rho\}\{\textbackslash epsilon\_0\}\$
-où \$\textbackslash vec\{E\}\$ est le champ électrique,
-\$\textbackslash rho\$ est la densité volumique de charge et
-\$\textbackslash epsilon\_0\$ est la permittivité du vide.
+\subsection*{1) Démontrer le théorème de Gauss et le théorème d'Ampère à l'aide des équations de Maxwell ainsi que des théorèmes de Green-Ostrogradski et la Stokes-Ampère.}
 
-\textbackslash item \textbackslash textbf\{Application du Théorème de
-Green-Ostrogradski (Théorème de la Divergence) :\} Le théorème de
-Green-Ostrogradski établit une relation entre
-l\textquotesingle intégrale de volume de la divergence
-d\textquotesingle un champ vectoriel et le flux de ce champ à travers la
-surface fermée qui délimite ce volume :
-\$\textbackslash oiint\_\textbackslash Sigma \textbackslash vec\{E\}
-\textbackslash cdot d\textbackslash vec\{S\} = \textbackslash iiint\_V
-\textbackslash div \textbackslash vec\{E\} \textbackslash,
-d\textbackslash tau\$ où \$\textbackslash Sigma\$ est une surface fermée
-et \$V\$ est le volume qu\textquotesingle elle enveloppe.
+\subsubsection*{Démonstration du théorème de Gauss (électrostatique)}
+Le théorème de Gauss est une formulation intégrale de l'équation de Maxwell-Gauss. Il relie le flux du champ électrique à travers une surface fermée à la charge électrique totale contenue dans le volume délimité par cette surface.
 
-\textbackslash item \textbackslash textbf\{Substitution et conclusion
-:\} En substituant l\textquotesingle expression de \$\textbackslash div
-\textbackslash vec\{E\}\$ de l\textquotesingle équation de Maxwell-Gauss
-dans le théorème de Green-Ostrogradski, on obtient :
-\$\textbackslash oiint\_\textbackslash Sigma \textbackslash vec\{E\}
-\textbackslash cdot d\textbackslash vec\{S\} = \textbackslash iiint\_V
-\textbackslash left(\textbackslash frac\{\textbackslash rho\}\{\textbackslash epsilon\_0\}\textbackslash right)
-\textbackslash, d\textbackslash tau\$
-\$\textbackslash oiint\_\textbackslash Sigma \textbackslash vec\{E\}
-\textbackslash cdot d\textbackslash vec\{S\} =
-\textbackslash frac\{1\}\{\textbackslash epsilon\_0\}
-\textbackslash iiint\_V \textbackslash rho \textbackslash,
-d\textbackslash tau\$ L\textquotesingle intégrale
-\$\textbackslash iiint\_V \textbackslash rho \textbackslash,
-d\textbackslash tau\$ représente la charge totale \$Q\_\{int\}\$
-contenue à l\textquotesingle intérieur du volume \$V\$ délimité par la
-surface \$\textbackslash Sigma\$. Ainsi, le théorème de Gauss sous sa
-forme intégrale est démontré :
-\$\textbackslash oiint\_\textbackslash Sigma \textbackslash vec\{E\}
-\textbackslash cdot d\textbackslash vec\{S\} =
-\textbackslash frac\{Q\_\{int\}\}\{\textbackslash epsilon\_0\}\$
-\textbackslash end\{enumerate\}
+\begin{enumerate}[(a)]
+    \item \textbf{Point de départ : Équation de Maxwell-Gauss (forme locale)}
+    En tout point de l'espace, la divergence du champ électrique $\vec{E}$ est proportionnelle à la densité volumique de charge $\rho$ en ce point :
+    \begin{equation*}
+        \div \vec{E} = \frac{\rho}{\epsilon_0}
+    \end{equation*}
 
-\textbackslash subsubsection\{Démonstration du Théorème
-d\textquotesingle Ampère\} Le théorème d\textquotesingle Ampère relie la
-circulation du champ magnétique le long d\textquotesingle un contour
-fermé aux courants enlacés par ce contour.
-\textbackslash begin\{enumerate\} \textbackslash item
-\textbackslash textbf\{Forme locale de l\textquotesingle équation de
-Maxwell-Ampère (en régime stationnaire) :\} En magnétostatique (régime
-stationnaire, où \$\textbackslash frac\{\textbackslash partial
-\textbackslash vec\{E\}\}\{\textbackslash partial t\} =
-\textbackslash vec\{0\}\$), l\textquotesingle équation de Maxwell-Ampère
-se simplifie et s\textquotesingle écrit sous sa forme locale :
-\$\textbackslash rot \textbackslash vec\{B\} = \textbackslash mu\_0
-\textbackslash vec\{j\}\$ où \$\textbackslash vec\{B\}\$ est le champ
-magnétique, \$\textbackslash vec\{j\}\$ est la densité volumique de
-courant et \$\textbackslash mu\_0\$ est la perméabilité magnétique du
-vide.
+    \item \textbf{Intégration sur un volume fermé $V$}
+    Intégrons cette équation sur un volume $V$ délimité par une surface fermée $\Sigma$ :
+    \begin{equation*}
+        \iiint_V \div \vec{E} \dd V = \iiint_V \frac{\rho}{\epsilon_0} \dd V
+    \end{equation*}
 
-\textbackslash item \textbackslash textbf\{Application du Théorème de
-Stokes-Ampère (Théorème de Stokes) :\} Le théorème de Stokes-Ampère (ou
-théorème du rotationnel) établit une relation entre la circulation
-d\textquotesingle un champ vectoriel le long d\textquotesingle un
-contour fermé et le flux du rotationnel de ce champ à travers toute
-surface s\textquotesingle appuyant sur ce contour :
-\$\textbackslash oint\_\textbackslash Gamma \textbackslash vec\{B\}
-\textbackslash cdot d\textbackslash vec\{l\} = \textbackslash iint\_S
-\textbackslash rot \textbackslash vec\{B\} \textbackslash cdot
-d\textbackslash vec\{S\}\$ où \$\textbackslash Gamma\$ est un contour
-fermé et \$S\$ est une surface s\textquotesingle appuyant sur
-\$\textbackslash Gamma\$. L\textquotesingle orientation de
-\$\textbackslash Gamma\$ et de \$S\$ est liée par la règle du
-tire-bouchon.
+    \item \textbf{Application du théorème de Green-Ostrogradski (théorème de la divergence)}
+    Le théorème de Green-Ostrogradski stipule que l'intégrale de volume de la divergence d'un champ vectoriel est égale au flux de ce champ à travers la surface fermée qui délimite ce volume :
+    \begin{equation*}
+        \iiint_V \div \vec{E} \dd V = \oint_{\Sigma} \vec{E} \cdot \dd \vec{S}
+    \end{equation*}
 
-\textbackslash item \textbackslash textbf\{Substitution et conclusion
-:\} En substituant l\textquotesingle expression de \$\textbackslash rot
-\textbackslash vec\{B\}\$ de l\textquotesingle équation de
-Maxwell-Ampère dans le théorème de Stokes-Ampère, on obtient :
-\$\textbackslash oint\_\textbackslash Gamma \textbackslash vec\{B\}
-\textbackslash cdot d\textbackslash vec\{l\} = \textbackslash iint\_S
-(\textbackslash mu\_0 \textbackslash vec\{j\}) \textbackslash cdot
-d\textbackslash vec\{S\}\$ \$\textbackslash oint\_\textbackslash Gamma
-\textbackslash vec\{B\} \textbackslash cdot d\textbackslash vec\{l\} =
-\textbackslash mu\_0 \textbackslash iint\_S \textbackslash vec\{j\}
-\textbackslash cdot d\textbackslash vec\{S\}\$
-L\textquotesingle intégrale \$\textbackslash iint\_S
-\textbackslash vec\{j\} \textbackslash cdot d\textbackslash vec\{S\}\$
-représente le courant \$I\_\{enlacé\}\$ traversant la surface \$S\$.
-Ainsi, le théorème d\textquotesingle Ampère sous sa forme intégrale est
-démontré : \$\textbackslash oint\_\textbackslash Gamma
-\textbackslash vec\{B\} \textbackslash cdot d\textbackslash vec\{l\} =
-\textbackslash mu\_0 I\_\{enlacé\}\$ Il est crucial de bien orienter le
-contour \$\textbackslash Gamma\$ et la surface \$S\$ à
-l\textquotesingle aide de la règle du tire-bouchon. Si le contour est
-parcouru dans un sens donné, le vecteur surface
-\$d\textbackslash vec\{S\}\$ est orienté dans le sens
-d\textquotesingle avancement d\textquotesingle un tire-bouchon
-qu\textquotesingle on tournerait dans le même sens que le contour.
-\textbackslash end\{enumerate\}
+    \item \textbf{Définition de la charge intérieure}
+    La charge électrique totale $Q_{\text{int}}$ contenue dans le volume $V$ est donnée par :
+    \begin{equation*}
+        Q_{\text{int}} = \iiint_V \rho \dd V
+    \end{equation*}
 
-\textbackslash subsection\{Questions 2 à 5: Applications du théorème
-d\textquotesingle Ampère\} Pour chaque application, la méthode consiste
-à : \textbackslash begin\{enumerate\} \textbackslash item Étudier les
-symétries de la distribution de courant pour déduire la direction et la
-dépendance du champ \$\textbackslash vec\{B\}\$. \textbackslash item
-Choisir un contour d\textquotesingle Ampère \$\textbackslash Gamma\$
-astucieux (souvent un cercle ou un rectangle) où
-\$\textbackslash vec\{B\} \textbackslash cdot d\textbackslash vec\{l\}\$
-est facile à calculer. \textbackslash item Calculer la circulation
-\$\textbackslash oint\_\textbackslash Gamma \textbackslash vec\{B\}
-\textbackslash cdot d\textbackslash vec\{l\}\$. \textbackslash item
-Calculer le courant \$I\_\{enlacé\}\$ traversant la surface \$S\$
-délimitée par \$\textbackslash Gamma\$, en respectant la règle du
-tire-bouchon. \textbackslash item Égaler les deux expressions via le
-théorème d\textquotesingle Ampère :
-\$\textbackslash oint\_\textbackslash Gamma \textbackslash vec\{B\}
-\textbackslash cdot d\textbackslash vec\{l\} = \textbackslash mu\_0
-I\_\{enlacé\}\$. \textbackslash end\{enumerate\}
+    \item \textbf{Conclusion : Théorème de Gauss}
+    En combinant ces résultats, on obtient le théorème de Gauss :
+    \begin{equation*}
+        \oint_{\Sigma} \vec{E} \cdot \dd \vec{S} = \frac{Q_{\text{int}}}{\epsilon_0}
+    \end{equation*}
+\end{enumerate}
 
-\textbackslash subsubsection\{Question 2: Champ magnétique
-d\textquotesingle un fil infini parcouru par un courant \$I\$\}
-\textbackslash begin\{enumerate\} \textbackslash item
-\textbackslash textbf\{Symétries :\} Le fil est infini le long de
-l\textquotesingle axe \$Oz\$. La distribution de courant est invariante
-par rotation autour de \$Oz\$ et par translation le long de \$Oz\$. Par
-conséquent, le champ \$\textbackslash vec\{B\}\$ ne dépend que de la
-distance \$r\$ à l\textquotesingle axe
-(\$r=\textbackslash sqrt\{x\^{}2+y\^{}2\}\$) et est azimuthal :
-\$\textbackslash vec\{B\}(M) = B(r)
-\textbackslash vec\{u\}\_\textbackslash theta\$.
+\subsubsection*{Démonstration du théorème d'Ampère (magnétostatique)}
+Le théorème d'Ampère (en régime stationnaire) est une formulation intégrale de l'équation de Maxwell-Ampère. Il relie la circulation du champ magnétique le long d'un contour fermé au courant électrique total enlacé par ce contour.
 
-\textbackslash item \textbackslash textbf\{Contour
-d\textquotesingle Ampère :\} On choisit un cercle
-\$\textbackslash Gamma\$ de rayon \$r\$ centré sur le fil, situé dans un
-plan perpendiculaire au fil. On oriente \$\textbackslash Gamma\$ dans le
-sens de \$\textbackslash vec\{u\}\_\textbackslash theta\$.
+\begin{enumerate}[(a)]
+    \item \textbf{Point de départ : Équation de Maxwell-Ampère (forme locale, régime stationnaire)}
+    En régime stationnaire (c'est-à-dire quand les champs électriques et magnétiques sont indépendants du temps, donc $\pdv{\vec{E}}{t} = \vec{0}$), l'équation de Maxwell-Ampère se simplifie à :
+    \begin{equation*}
+        \curl \vec{B} = \mu_0 \vec{j}
+    \end{equation*}
+    où $\vec{j}$ est la densité volumique de courant.
 
-\textbackslash item \textbackslash textbf\{Circulation de
-\$\textbackslash vec\{B\}\$ :\} Le long de \$\textbackslash Gamma\$,
-\$\textbackslash vec\{B\}\$ est tangentiel et de module constant
-\$B(r)\$. \$d\textbackslash vec\{l\} = r \textbackslash,
-d\textbackslash theta \textbackslash,
-\textbackslash vec\{u\}\_\textbackslash theta\$.
-\$\textbackslash oint\_\textbackslash Gamma \textbackslash vec\{B\}
-\textbackslash cdot d\textbackslash vec\{l\} =
-\textbackslash int\_0\^{}\{2\textbackslash pi\} B(r)
-\textbackslash vec\{u\}\_\textbackslash theta \textbackslash cdot (r
-\textbackslash, d\textbackslash theta \textbackslash,
-\textbackslash vec\{u\}\_\textbackslash theta) = B(r) r
-\textbackslash int\_0\^{}\{2\textbackslash pi\} d\textbackslash theta =
-B(r) (2\textbackslash pi r)\$.
+    \item \textbf{Intégration sur une surface $S$}
+    Prenons une surface $S$ qui s'appuie sur un contour fermé $\Gamma$. Intégrons l'équation précédente sur cette surface :
+    \begin{equation*}
+        \iint_S \curl \vec{B} \cdot \dd \vec{S} = \iint_S \mu_0 \vec{j} \cdot \dd \vec{S}
+    \end{equation*}
 
-\textbackslash item \textbackslash textbf\{Courant enlacé
-\$I\_\{enlacé\}\$ :\} La surface \$S\$ s\textquotesingle appuyant sur
-\$\textbackslash Gamma\$ est le disque de rayon \$r\$. Si
-\$r\textgreater0\$, le courant \$I\$ traverse ce disque une fois. En
-appliquant la règle du tire-bouchon, si \$I\$ est dirigé vers les
-\$z\textgreater0\$ et \$\textbackslash Gamma\$ est parcouru dans le sens
-trigonométrique, alors \$I\_\{enlacé\} = I\$.
+    \item \textbf{Application du théorème de Stokes-Ampère (théorème du rotationnel)}
+    Le théorème de Stokes-Ampère stipule que l'intégrale de surface du rotationnel d'un champ vectoriel est égale à la circulation de ce champ le long du contour fermé qui délimite cette surface :
+    \begin{equation*}
+        \iint_S \curl \vec{B} \cdot \dd \vec{S} = \oint_{\Gamma} \vec{B} \cdot \dd \vec{l}
+    \end{equation*}
+    L'orientation de $\dd \vec{S}$ par rapport à celle de $\dd \vec{l}$ doit respecter la règle du tire-bouchon.
 
-\textbackslash item \textbackslash textbf\{Résultat :\} \$B(r)
-(2\textbackslash pi r) = \textbackslash mu\_0 I \textbackslash implies
-B(r) = \textbackslash frac\{\textbackslash mu\_0 I\}\{2\textbackslash pi
-r\}\$. Finalement : \$\textbackslash vec\{B\}(M) =
-\textbackslash frac\{\textbackslash mu\_0 I\}\{2\textbackslash pi r\}
-\textbackslash vec\{u\}\_\textbackslash theta\$.
-\textbackslash end\{enumerate\}
+    \item \textbf{Définition du courant enlacé}
+    Le courant total $I_{\text{enlacé}}$ traversant la surface $S$ (et donc enlacé par le contour $\Gamma$) est donné par :
+    \begin{equation*}
+        I_{\text{enlacé}} = \iint_S \vec{j} \cdot \dd \vec{S}
+    \end{equation*}
 
-\textbackslash subsubsection\{Question 3: Champ magnétique
-d\textquotesingle un cylindre plein infini de rayon \$R\$\} Le cylindre
-est parcouru par un courant total \$I\$ uniformément réparti sur sa
-section. On suppose l\textquotesingle axe du cylindre confondu avec
-\$Oz\$.
+    \item \textbf{Conclusion : Théorème d'Ampère}
+    En combinant ces résultats, on obtient le théorème d'Ampère :
+    \begin{equation*}
+        \oint_{\Gamma} \vec{B} \cdot \dd \vec{l} = \mu_0 I_{\text{enlacé}}
+    \end{equation*}
+    Il est crucial d'appliquer la règle du tire-bouchon pour l'orientation de $\Gamma$ et $S$ : si on parcourt $\Gamma$ dans un certain sens, le courant $I_{\text{enlacé}}$ est positif s'il traverse $S$ dans le sens du pouce de la main droite.
+\end{enumerate}
 
-\textbackslash begin\{enumerate\} \textbackslash item
-\textbackslash textbf\{Symétries :\} Identiques au fil infini. Le champ
-est de la forme \$\textbackslash vec\{B\}(M) = B(r)
-\textbackslash vec\{u\}\_\textbackslash theta\$.
+\subsection*{Application du théorème d'Ampère sur les géométries ci-dessous :}
+Pour chaque application, la démarche est la suivante :
+\begin{enumerate}
+    \item \textbf{Analyse des symétries} : Déduire la direction et la dépendance du champ $\vec{B}$.
+    \item \textbf{Choix du contour d'Ampère $\Gamma$} : Un contour fermé judicieux pour simplifier le calcul de la circulation.
+    \item \textbf{Calcul de la circulation} : $\oint_{\Gamma} \vec{B} \cdot \dd \vec{l}$.
+    \item \textbf{Calcul du courant enlacé} : $I_{\text{enlacé}}$.
+    \item \textbf{Application du théorème} : $\oint_{\Gamma} \vec{B} \cdot \dd \vec{l} = \mu_0 I_{\text{enlacé}}$.
+    \item \textbf{Orientation} : Toujours préciser l'orientation du contour et de la surface associée avec la règle du tire-bouchon.
+\end{enumerate}
 
-\textbackslash item \textbackslash textbf\{Contour
-d\textquotesingle Ampère :\} Un cercle \$\textbackslash Gamma\$ de rayon
-\$r\$ centré sur l\textquotesingle axe du cylindre. La circulation reste
-\$B(r) (2\textbackslash pi r)\$.
+\subsubsection*{2) Fil infini parcouru par un courant I.}
+Considérons un fil rectiligne infini, orienté selon l'axe $Oz$, parcouru par un courant $I$ dans le sens $Oz$.
 
-\textbackslash item \textbackslash textbf\{Courant enlacé
-\$I\_\{enlacé\}\$ :\} \textbackslash begin\{itemize\}
-\textbackslash item \textbackslash textbf\{Cas \$r \textless{} R\$
-(intérieur du cylindre) :\} Le courant est réparti uniformément. La
-densité surfacique de courant est \$j = I/(\textbackslash pi R\^{}2)\$.
-Le courant enlacé par \$\textbackslash Gamma\$ est proportionnel à
-l\textquotesingle aire du disque de rayon \$r\$ : \$I\_\{enlacé\} = j
-(\textbackslash pi r\^{}2) = \textbackslash frac\{I\}\{\textbackslash pi
-R\^{}2\} (\textbackslash pi r\^{}2) = I
-\textbackslash frac\{r\^{}2\}\{R\^{}2\}\$. \textbackslash item
-\textbackslash textbf\{Cas \$r \textbackslash ge R\$ (extérieur du
-cylindre) :\} Tout le courant \$I\$ traverse la surface délimitée par
-\$\textbackslash Gamma\$. \$I\_\{enlacé\} = I\$.
-\textbackslash end\{itemize\}
+\begin{enumerate}[(a)]
+    \item \textbf{Symétries} :
+    La distribution de courant présente une symétrie cylindrique autour de l'axe $Oz$ et une invariance par translation le long de $Oz$. Par conséquent, le champ magnétique $\vec{B}$ ne peut dépendre que de la distance $r$ à l'axe et est purement azimutal : $\vec{B}(M) = B(r) \vec{u}_{\theta}$.
 
-\textbackslash item \textbackslash textbf\{Résultat :\}
-\textbackslash begin\{itemize\} \textbackslash item
-\textbackslash textbf\{Pour \$r \textless{} R\$ :\} \$B(r)
-(2\textbackslash pi r) = \textbackslash mu\_0 I
-\textbackslash frac\{r\^{}2\}\{R\^{}2\} \textbackslash implies B(r) =
-\textbackslash frac\{\textbackslash mu\_0 I r\}\{2\textbackslash pi
-R\^{}2\}\$. \$\textbackslash vec\{B\}(M) =
-\textbackslash frac\{\textbackslash mu\_0 I r\}\{2\textbackslash pi
-R\^{}2\} \textbackslash vec\{u\}\_\textbackslash theta\$.
-\textbackslash item \textbackslash textbf\{Pour \$r \textbackslash ge
-R\$ :\} \$B(r) (2\textbackslash pi r) = \textbackslash mu\_0 I
-\textbackslash implies B(r) = \textbackslash frac\{\textbackslash mu\_0
-I\}\{2\textbackslash pi r\}\$. \$\textbackslash vec\{B\}(M) =
-\textbackslash frac\{\textbackslash mu\_0 I\}\{2\textbackslash pi r\}
-\textbackslash vec\{u\}\_\textbackslash theta\$.
-\textbackslash end\{itemize\} \textbackslash end\{enumerate\}
+    \item \textbf{Contour d'Ampère} :
+    Nous choisissons un cercle de rayon $r$, centré sur le fil, situé dans un plan perpendiculaire au fil ($z=\text{constante}$). Le contour est parcouru dans le sens positif (sens trigonométrique si on regarde depuis $z>0$).
 
-\textbackslash subsubsection\{Question 4: Champ magnétique
-d\textquotesingle un solénoïde infini\} Un solénoïde infini est
-caractérisé par \$n\$ spires par unité de longueur, parcourues par un
-courant \$I\$. Son axe est l\textquotesingle axe \$Oz\$.
-L\textquotesingle énoncé admet que le champ magnétique extérieur est
-nul.
+    \item \textbf{Circulation} :
+    Le long de ce contour, $\vec{B}$ est tangent au contour et de module constant $B(r)$. $\dd \vec{l} = r \dd\theta \vec{u}_{\theta}$.
+    \begin{equation*}
+        \oint_{\Gamma} \vec{B} \cdot \dd \vec{l} = \oint_{\Gamma} B(r) \vec{u}_{\theta} \cdot (r \dd\theta \vec{u}_{\theta}) = B(r) \int_0^{2\pi} r \dd\theta = B(r) (2\pi r)
+    \end{equation*}
 
-\textbackslash begin\{enumerate\} \textbackslash item
-\textbackslash textbf\{Symétries :\} Invariance par translation le long
-de \$Oz\$ et par rotation autour de \$Oz\$. La seule direction possible
-pour le champ est l\textquotesingle axe \$Oz\$. Donc
-\$\textbackslash vec\{B\}(M) = B\_z(r) \textbackslash vec\{u\}\_z\$.
-L\textquotesingle hypothèse de solénoïde infini permet de considérer
-\$B\_z\$ indépendant de \$z\$. De plus, la symétrie par rapport au plan
-médiateur d\textquotesingle une spire implique que \$B\_z\$ ne change
-pas de signe si on inverse \$z\$. Enfin, le champ est uniforme à
-l\textquotesingle intérieur et nul à l\textquotesingle extérieur. Donc
-\$\textbackslash vec\{B\}\_\{int\} = B \textbackslash vec\{u\}\_z\$ et
-\$\textbackslash vec\{B\}\_\{ext\} = \textbackslash vec\{0\}\$.
+    \item \textbf{Courant enlacé} :
+    La surface délimitée par ce contour est un disque. Le courant $I$ traverse entièrement ce disque.
+    Selon la règle du tire-bouchon, si le contour est parcouru dans le sens positif, le courant $I$ est enlacé positivement s'il est dirigé vers les $z$ positifs. Donc $I_{\text{enlacé}} = I$.
 
-\textbackslash item \textbackslash textbf\{Contour
-d\textquotesingle Ampère :\} On choisit un contour rectangulaire
-\$ABCD\$ de longueur \$L\$ et largeur \$h\$.
-\textbackslash begin\{itemize\} \textbackslash item \$AB\$ est parallèle
-à l\textquotesingle axe \$Oz\$, situé à l\textquotesingle intérieur du
-solénoïde (longueur \$L\$). \textbackslash item \$CD\$ est parallèle à
-l\textquotesingle axe \$Oz\$, situé à l\textquotesingle extérieur du
-solénoïde (longueur \$L\$). \textbackslash item \$BC\$ et \$DA\$ sont
-perpendiculaires à l\textquotesingle axe \$Oz\$ (longueur \$h\$).
-\textbackslash end\{itemize\} On parcourt le contour dans le sens \$A
-\textbackslash to B \textbackslash to C \textbackslash to D
-\textbackslash to A\$.
+    \item \textbf{Application du théorème} :
+    \begin{equation*}
+        B(r) (2\pi r) = \mu_0 I
+    \end{equation*}
+    D'où le champ magnétique :
+    \begin{equation*}
+        \vec{B}(r) = \frac{\mu_0 I}{2\pi r} \vec{u}_{\theta}
+    \end{equation*}
+\end{enumerate}
 
-\textbackslash item \textbackslash textbf\{Circulation de
-\$\textbackslash vec\{B\}\$ :\}
-\$\textbackslash oint\_\textbackslash Gamma \textbackslash vec\{B\}
-\textbackslash cdot d\textbackslash vec\{l\} =
-\textbackslash int\_\{AB\} \textbackslash vec\{B\} \textbackslash cdot
-d\textbackslash vec\{l\} + \textbackslash int\_\{BC\}
-\textbackslash vec\{B\} \textbackslash cdot d\textbackslash vec\{l\} +
-\textbackslash int\_\{CD\} \textbackslash vec\{B\} \textbackslash cdot
-d\textbackslash vec\{l\} + \textbackslash int\_\{DA\}
-\textbackslash vec\{B\} \textbackslash cdot d\textbackslash vec\{l\}\$
-\textbackslash begin\{itemize\} \textbackslash item
-\$\textbackslash int\_\{AB\} \textbackslash vec\{B\} \textbackslash cdot
-d\textbackslash vec\{l\} = B L\$ (car \$\textbackslash vec\{B\} = B
-\textbackslash vec\{u\}\_z\$ et \$d\textbackslash vec\{l\} =
-\textbackslash vec\{u\}\_z dz\$ le long de \$AB\$). \textbackslash item
-\$\textbackslash int\_\{CD\} \textbackslash vec\{B\} \textbackslash cdot
-d\textbackslash vec\{l\} = 0\$ (car \$\textbackslash vec\{B\} =
-\textbackslash vec\{0\}\$ à l\textquotesingle extérieur).
-\textbackslash item \$\textbackslash int\_\{BC\} \textbackslash vec\{B\}
-\textbackslash cdot d\textbackslash vec\{l\} = 0\$ et
-\$\textbackslash int\_\{DA\} \textbackslash vec\{B\} \textbackslash cdot
-d\textbackslash vec\{l\} = 0\$ (car \$\textbackslash vec\{B\}\$ est
-parallèle à \$Oz\$ et \$d\textbackslash vec\{l\}\$ est perpendiculaire).
-\textbackslash end\{itemize\} Donc
-\$\textbackslash oint\_\textbackslash Gamma \textbackslash vec\{B\}
-\textbackslash cdot d\textbackslash vec\{l\} = B L\$.
+\subsubsection*{3) Cylindre plein infini de rayon R parcouru par un courant I.}
+Considérons un cylindre plein infini de rayon $R$, orienté selon l'axe $Oz$, parcouru par un courant total $I$ uniformément réparti sur sa section. La densité de courant volumique est donc $j = \frac{I}{\pi R^2}$ pour $r \le R$, et nulle ailleurs.
 
-\textbackslash item \textbackslash textbf\{Courant enlacé
-\$I\_\{enlacé\}\$ :\} La surface \$S\$ délimitée par le rectangle
-\$ABCD\$ est traversée par les spires du solénoïde. Pour une longueur
-\$L\$, il y a \$nL\$ spires. Chaque spire apporte un courant \$I\$. En
-respectant la règle du tire-bouchon (si \$I\$ est tel que
-\$\textbackslash vec\{B\}\$ est dans le sens de \$AB\$), \$I\_\{enlacé\}
-= nLI\$.
+\begin{enumerate}[(a)]
+    \item \textbf{Symétries} :
+    Mêmes symétries que le fil infini : symétrie cylindrique et invariance par translation. Le champ magnétique est donc $\vec{B}(M) = B(r) \vec{u}_{\theta}$.
 
-\textbackslash item \textbackslash textbf\{Résultat :\} \$B L =
-\textbackslash mu\_0 nLI \textbackslash implies B = \textbackslash mu\_0
-nI\$. Finalement : \$\textbackslash vec\{B\} = \textbackslash mu\_0 nI
-\textbackslash vec\{u\}\_z\$ (à l\textquotesingle intérieur du
-solénoïde), et \$\textbackslash vec\{B\} = \textbackslash vec\{0\}\$ (à
-l\textquotesingle extérieur). \textbackslash end\{enumerate\}
+    \item \textbf{Contour d'Ampère} :
+    Nous choisissons un cercle de rayon $r$, centré sur l'axe du cylindre, dans un plan perpendiculaire à l'axe.
 
-\textbackslash subsubsection\{Question 5: Champ magnétique
-d\textquotesingle une bobine torique\} Une bobine torique est constituée
-de \$N\$ spires enroulées uniformément sur un tore (un anneau). Soit
-\$I\$ le courant dans chaque spire. On note \$R\_1\$ et \$R\_2\$ les
-rayons intérieur et extérieur du tore, et \$r\$ la distance à
-l\textquotesingle axe de symétrie du tore.
+    \item \textbf{Circulation} :
+    Comme pour le fil infini, la circulation vaut $B(r) (2\pi r)$.
 
-\textbackslash begin\{enumerate\} \textbackslash item
-\textbackslash textbf\{Symétries :\} La distribution de courant est
-invariante par rotation autour de l\textquotesingle axe central du tore.
-Le champ \$\textbackslash vec\{B\}\$ est donc azimuthal et ne dépend que
-de \$r\$ : \$\textbackslash vec\{B\}(M) = B(r)
-\textbackslash vec\{u\}\_\textbackslash theta\$.
+    \item \textbf{Courant enlacé} :
+    \begin{itemize}
+        \item \textbf{Cas 1 : $r < R$ (intérieur du cylindre)}
+        Le courant enlacé est le courant qui traverse le disque de rayon $r$.
+        Puisque le courant est uniformément réparti, la densité surfacique de courant est constante.
+        $I_{\text{enlacé}} = J \times \text{aire du disque de rayon } r = \frac{I}{\pi R^2} \times (\pi r^2) = I \frac{r^2}{R^2}$.
+        \item \textbf{Cas 2 : $r \ge R$ (extérieur du cylindre)}
+        Le courant enlacé est le courant total $I$ qui traverse la section du cylindre.
+        $I_{\text{enlacé}} = I$.
+    \end{itemize}
 
-\textbackslash item \textbackslash textbf\{Contour
-d\textquotesingle Ampère :\} On choisit un cercle
-\$\textbackslash Gamma\$ de rayon \$r\$ centré sur l\textquotesingle axe
-du tore. On oriente \$\textbackslash Gamma\$ dans le sens de
-\$\textbackslash vec\{u\}\_\textbackslash theta\$.
+    \item \textbf{Application du théorème} :
+    \begin{itemize}
+        \item \textbf{Cas 1 : $r < R$}
+        $B(r) (2\pi r) = \mu_0 I \frac{r^2}{R^2}$
+        \begin{equation*}
+            \vec{B}(r) = \frac{\mu_0 I r}{2\pi R^2} \vec{u}_{\theta}
+        \end{equation*}
+        Le champ croît linéairement avec $r$ à l'intérieur.
+        \item \textbf{Cas 2 : $r \ge R$}
+        $B(r) (2\pi r) = \mu_0 I$
+        \begin{equation*}
+            \vec{B}(r) = \frac{\mu_0 I}{2\pi r} \vec{u}_{\theta}
+        \end{equation*}
+        Le champ décroît comme $1/r$ à l'extérieur, comme pour un fil infini.
+    \end{itemize}
+\end{enumerate}
 
-\textbackslash item \textbackslash textbf\{Circulation de
-\$\textbackslash vec\{B\}\$ :\} Le long de \$\textbackslash Gamma\$,
-\$\textbackslash vec\{B\}\$ est tangentiel et de module constant
-\$B(r)\$. \$d\textbackslash vec\{l\} = r \textbackslash,
-d\textbackslash theta \textbackslash,
-\textbackslash vec\{u\}\_\textbackslash theta\$.
-\$\textbackslash oint\_\textbackslash Gamma \textbackslash vec\{B\}
-\textbackslash cdot d\textbackslash vec\{l\} = B(r) (2\textbackslash pi
-r)\$.
+\subsubsection*{4) Solénoïde infini parcouru par un courant I en admettant que le champ magnétique extérieur est nul.}
+Considérons un solénoïde idéal infini d'axe $Oz$, constitué de $n$ spires par unité de longueur, parcourues par un courant $I$.
 
-\textbackslash item \textbackslash textbf\{Courant enlacé
-\$I\_\{enlacé\}\$ :\} \textbackslash begin\{itemize\}
-\textbackslash item \textbackslash textbf\{Cas \$r \textless{} R\_1\$ ou
-\$r \textgreater{} R\_2\$ (extérieur de l\textquotesingle enroulement)
-:\} Le contour \$\textbackslash Gamma\$ n\textquotesingle enlace aucun
-courant (ou les courants dans un sens sont compensés par les courants
-dans l\textquotesingle autre sens, si l\textquotesingle on considère le
-fil comme une boucle fermée sur elle-même). \$I\_\{enlacé\} = 0\$.
-\textbackslash item \textbackslash textbf\{Cas \$R\_1 \textless{} r
-\textless{} R\_2\$ (intérieur de l\textquotesingle enroulement) :\} Le
-contour \$\textbackslash Gamma\$ enlace les \$N\$ spires, chacune
-parcourue par le courant \$I\$. En respectant la règle du tire-bouchon,
-\$I\_\{enlacé\} = NI\$. \textbackslash end\{itemize\}
+\begin{enumerate}[(a)]
+    \item \textbf{Symétries} :
+    Le système présente une symétrie de révolution autour de l'axe $Oz$ et une invariance par translation le long de $Oz$.
+    Par superposition des champs créés par chaque spire (assimilée à un cercle), on déduit que le champ $\vec{B}$ est axial ($\vec{B} = B_z \vec{u}_z$) et ne dépend que de $r$ (distance à l'axe).
+    L'hypothèse du solénoïde infini implique que le champ est uniforme à l'intérieur et nul à l'extérieur (ce dernier point est explicitement donné).
 
-\textbackslash item \textbackslash textbf\{Résultat :\}
-\textbackslash begin\{itemize\} \textbackslash item
-\textbackslash textbf\{Pour \$r \textless{} R\_1\$ ou \$r \textgreater{}
-R\_2\$ :\} \$B(r) (2\textbackslash pi r) = \textbackslash mu\_0
-\textbackslash cdot 0 \textbackslash implies B(r) = 0\$.
-\$\textbackslash vec\{B\}(M) = \textbackslash vec\{0\}\$.
-\textbackslash item \textbackslash textbf\{Pour \$R\_1 \textless{} r
-\textless{} R\_2\$ :\} \$B(r) (2\textbackslash pi r) =
-\textbackslash mu\_0 NI \textbackslash implies B(r) =
-\textbackslash frac\{\textbackslash mu\_0 NI\}\{2\textbackslash pi
-r\}\$. \$\textbackslash vec\{B\}(M) =
-\textbackslash frac\{\textbackslash mu\_0 NI\}\{2\textbackslash pi r\}
-\textbackslash vec\{u\}\_\textbackslash theta\$.
-\textbackslash end\{itemize\} \textbackslash end\{enumerate\}
+    \item \textbf{Contour d'Ampère} :
+    Nous choisissons un rectangle ABCD dans un plan contenant l'axe $Oz$.
+    \begin{itemize}
+        \item Côté AB, de longueur $L$, parallèle à l'axe $Oz$, à l'intérieur du solénoïde.
+        \item Côté CD, de longueur $L$, parallèle à l'axe $Oz$, à l'extérieur du solénoïde.
+        \item Côtés BC et DA, perpendiculaires à l'axe $Oz$.
+    \end{itemize}
+    Le contour est parcouru dans le sens A $\rightarrow$ B $\rightarrow$ C $\rightarrow$ D $\rightarrow$ A.
 
-\textbackslash section\{Notions clés à retenir\}
+    \item \textbf{Circulation} :
+    $\oint_{\Gamma} \vec{B} \cdot \dd \vec{l} = \int_A^B \vec{B} \cdot \dd \vec{l} + \int_B^C \vec{B} \cdot \dd \vec{l} + \int_C^D \vec{B} \cdot \dd \vec{l} + \int_D^A \vec{B} \cdot \dd \vec{l}$
+    \begin{itemize}
+        \item Sur AB : $\vec{B}$ est parallèle à $\dd \vec{l}$ et uniforme $B_z$. Donc $\int_A^B \vec{B} \cdot \dd \vec{l} = B_z L$.
+        \item Sur BC et DA : $\vec{B}$ est axial, $\dd \vec{l}$ est radial. Donc $\vec{B} \cdot \dd \vec{l} = 0$. Les intégrales sont nulles.
+        \item Sur CD : $\vec{B}$ est nul à l'extérieur. Donc $\int_C^D \vec{B} \cdot \dd \vec{l} = 0$.
+    \end{itemize}
+    La circulation totale est donc $B_z L$.
 
-\textbackslash subsection\{Électromagnétisme\}
-\textbackslash begin\{itemize\} \textbackslash item
-\textbackslash textbf\{Champs Électrostatiques :\}
-\textbackslash begin\{itemize\} \textbackslash item Théorème de Gauss
-(forme intégrale) : \$\textbackslash oiint\_\textbackslash Sigma
-\textbackslash vec\{E\} \textbackslash cdot d\textbackslash vec\{S\} =
-\textbackslash frac\{Q\_\{int\}\}\{\textbackslash epsilon\_0\}\$.
-\textbackslash item Équation de Maxwell-Gauss (forme locale) :
-\$\textbackslash div \textbackslash vec\{E\} =
-\textbackslash frac\{\textbackslash rho\}\{\textbackslash epsilon\_0\}\$.
-\textbackslash item Relation champ-potentiel : \$\textbackslash vec\{E\}
-= -\textbackslash grad V\$. \textbackslash item Potentiel
-électrostatique et surfaces équipotentielles. \textbackslash item
-Énergie potentielle électrique : \$W\_p = qV\$. \textbackslash item
-Équation de Poisson : \$\textbackslash Delta V =
--\textbackslash frac\{\textbackslash rho\}\{\textbackslash epsilon\_0\}\$.
-\textbackslash item Densité volumique d\textquotesingle énergie
-électrique : \$w\_e = \textbackslash frac\{1\}\{2\}
-\textbackslash epsilon\_0 E\^{}2\$. \textbackslash item Capacité
-d\textquotesingle un condensateur plan : \$C =
-\textbackslash frac\{\textbackslash epsilon\_0 S\}\{e\}\$.
-\textbackslash end\{itemize\} \textbackslash item
-\textbackslash textbf\{Champs Magnétostatiques (régime stationnaire) :\}
-\textbackslash begin\{itemize\} \textbackslash item Théorème
-d\textquotesingle Ampère (forme intégrale) :
-\$\textbackslash oint\_\textbackslash Gamma \textbackslash vec\{B\}
-\textbackslash cdot d\textbackslash vec\{l\} = \textbackslash mu\_0
-I\_\{enlacé\}\$. \textbackslash item Équation de Maxwell-Ampère (forme
-locale, régime stationnaire) : \$\textbackslash rot
-\textbackslash vec\{B\} = \textbackslash mu\_0
-\textbackslash vec\{j\}\$. \textbackslash item Équation de
-Maxwell-Thomson (forme locale) : \$\textbackslash div
-\textbackslash vec\{B\} = 0\$. \textbackslash item Densité volumique
-d\textquotesingle énergie magnétique : \$w\_m =
-\textbackslash frac\{B\^{}2\}\{2\textbackslash mu\_0\}\$.
-\textbackslash item Densité volumique d\textquotesingle énergie
-électromagnétique : \$w\_\{em\} = w\_e + w\_m\$.
-\textbackslash end\{itemize\} \textbackslash item
-\textbackslash textbf\{Outils Mathématiques :\}
-\textbackslash begin\{itemize\} \textbackslash item Théorème de
-Green-Ostrogradski (divergence) :
-\$\textbackslash oiint\_\textbackslash Sigma \textbackslash vec\{F\}
-\textbackslash cdot d\textbackslash vec\{S\} = \textbackslash iiint\_V
-\textbackslash div \textbackslash vec\{F\} \textbackslash,
-d\textbackslash tau\$. \textbackslash item Théorème de Stokes
-(rotationnel) : \$\textbackslash oint\_\textbackslash Gamma
-\textbackslash vec\{F\} \textbackslash cdot d\textbackslash vec\{l\} =
-\textbackslash iint\_S \textbackslash rot \textbackslash vec\{F\}
-\textbackslash cdot d\textbackslash vec\{S\}\$. \textbackslash item
-Importance de l\textquotesingle étude des symétries des sources pour la
-détermination des champs. \textbackslash item Règle du tire-bouchon (ou
-du tournevis) pour l\textquotesingle orientation cohérente des contours
-et des surfaces. \textbackslash end\{itemize\}
-\textbackslash end\{itemize\}
+    \item \textbf{Courant enlacé} :
+    Le contour ABCD enlace toutes les spires qui traversent la surface définie par le rectangle. Sur une longueur $L$, il y a $nL$ spires. Si le courant $I$ circule dans le sens qui, par la règle du tire-bouchon, donne un champ $B_z$ positif, alors $I_{\text{enlacé}} = nLI$.
 
-\textbackslash subsection\{Équilibres Chimiques\}
-\textbackslash begin\{itemize\} \textbackslash item Grandeurs de
-réaction : \$\textbackslash Delta\_r H\$, \$\textbackslash Delta\_r S\$,
-\$\textbackslash Delta\_r G\$. \textbackslash item Critère
-d\textquotesingle évolution spontanée : \$\textbackslash Delta\_r G
-\textbackslash cdot d\textbackslash xi \textless{} 0\$.
-\textbackslash item Relation entre l\textquotesingle enthalpie libre de
-réaction standard et la constante d\textquotesingle équilibre :
-\$\textbackslash Delta\_r G\^{}0 = -RT \textbackslash ln K\^{}0(T)\$.
-\textbackslash item Relation entre l\textquotesingle enthalpie libre de
-réaction et le quotient de réaction : \$\textbackslash Delta\_r G =
-\textbackslash Delta\_r G\^{}0 + RT \textbackslash ln Q\_r\$.
-\textbackslash item Relation de Van\textquotesingle t Hoff :
-\$\textbackslash frac\{d (\textbackslash ln K\^{}0)\}\{dT\} =
-\textbackslash frac\{\textbackslash Delta\_r H\^{}0\}\{RT\^{}2\}\$.
-\textbackslash item Approximation d\textquotesingle Ellingham :
-\$\textbackslash Delta\_r H\^{}0\$ et \$\textbackslash Delta\_r S\^{}0\$
-sont indépendants de la température. \textbackslash end\{itemize\}
+    \item \textbf{Application du théorème} :
+    $B_z L = \mu_0 nLI$
+    \begin{equation*}
+        \vec{B} = \mu_0 n I \vec{u}_z \quad \text{(à l'intérieur du solénoïde)}
+    \end{equation*}
+    Et $\vec{B} = \vec{0}$ à l'extérieur. Le champ est uniforme à l'intérieur.
+\end{enumerate}
 
-\textbackslash section\{Erreurs fréquentes\}
+\subsubsection*{5) Bobine torique parcourue par un courant I.}
+Une bobine torique est constituée de $N$ spires enroulées uniformément autour d'un tore (un anneau). Soit $r$ la distance à l'axe de symétrie du tore.
 
-\textbackslash begin\{itemize\} \textbackslash item
-\textbackslash textbf\{Applications des Théorèmes de Gauss et
-d\textquotesingle Ampère :\} \textbackslash begin\{itemize\}
-\textbackslash item \textbackslash textbf\{Mauvaise interprétation des
-symétries :\} Ne pas justifier correctement la direction du champ ou sa
-dépendance aux coordonnées. Par exemple, supposer un champ radial pour
-un fil infini. \textbackslash item \textbackslash textbf\{Mauvais choix
-de surface de Gauss ou de contour d\textquotesingle Ampère :\} Choisir
-une surface/un contour qui ne permet pas de simplifier le calcul de
-l\textquotesingle intégrale (e.g., \$\textbackslash vec\{E\}
-\textbackslash cdot d\textbackslash vec\{S\}\$ ou
-\$\textbackslash vec\{B\} \textbackslash cdot d\textbackslash vec\{l\}\$
-non constant ou non nul). \textbackslash item
-\textbackslash textbf\{Oubli de la règle du tire-bouchon/tournevis :\}
-Inversion du signe de \$Q\_\{int\}\$ ou \$I\_\{enlacé\}\$ à cause
-d\textquotesingle une orientation incohérente entre le contour et la
-surface associée. \textbackslash item \textbackslash textbf\{Confusion
-entre \$Q\_\{int\}\$ et \$Q\_\{total\}\$ ou \$I\_\{enlacé\}\$ et
-\$I\_\{total\}\$ :\} Utiliser la charge ou le courant total au lieu de
-ceux contenus/enlacés par la surface/le contour choisi.
-\textbackslash item \textbackslash textbf\{Absence de justification :\}
-Ne pas expliquer pourquoi certaines parties de la circulation ou du flux
-sont nulles (e.g., champ nul à l\textquotesingle extérieur
-d\textquotesingle un solénoïde, ou champ perpendiculaire au contour).
-\textbackslash end\{itemize\} \textbackslash item
-\textbackslash textbf\{Formes locales et intégrales :\} Mélanger les
-expressions, par exemple utiliser \$\textbackslash div
-\textbackslash vec\{E\} = Q\_\{int\}/\textbackslash epsilon\_0\$ au lieu
-de \$\textbackslash rho/\textbackslash epsilon\_0\$. \textbackslash item
-\textbackslash textbf\{Signes :\} Erreur fréquente sur le signe dans la
-relation \$\textbackslash vec\{E\} = -\textbackslash grad V\$.
-\textbackslash item \textbackslash textbf\{Régime stationnaire :\}
-Oublier que \$\textbackslash rot \textbackslash vec\{E\} =
-\textbackslash vec\{0\}\$ et que \$\textbackslash rot
-\textbackslash vec\{B\} = \textbackslash mu\_0 \textbackslash vec\{j\}\$
-ne sont valables qu\textquotesingle en régime stationnaire (ou négliger
-le courant de déplacement). \textbackslash item
-\textbackslash textbf\{Constantes physiques :\} Oublier
-\$\textbackslash mu\_0\$ ou \$\textbackslash epsilon\_0\$ dans les
-formules. \textbackslash item \textbackslash textbf\{Chimie :\}
-\textbackslash begin\{itemize\} \textbackslash item Confusion entre
-\$Q\_r\$ (quotient de réaction) et \$K\^{}0\$ (constante
-d\textquotesingle équilibre). \textbackslash item Erreurs de signe ou de
-facteur \$RT\$ dans les expressions d\textquotesingle enthalpie libre de
-réaction. \textbackslash item Application incorrecte de la loi de
-Van\textquotesingle t Hoff. \textbackslash item Oubli des conditions de
-validité des approximations (e.g., Ellingham).
-\textbackslash end\{itemize\} \textbackslash item
-\textbackslash textbf\{Notation vectorielle :\} Ne pas utiliser de
-notation vectorielle pour les champs (flèches au-dessus des symboles).
-\textbackslash end\{itemize\}
+\begin{enumerate}[(a)]
+    \item \textbf{Symétries} :
+    Le système présente une symétrie de révolution autour de l'axe du tore. Le champ $\vec{B}$ est donc azimutal ($\vec{B} = B(r) \vec{u}_{\theta}$) et ne dépend que de la distance $r$ à l'axe du tore.
 
-\textbackslash end\{document\}
+    \item \textbf{Contour d'Ampère} :
+    Nous choisissons un cercle de rayon $r$, centré sur l'axe du tore, dans le plan médian du tore.
+
+    \item \textbf{Circulation} :
+    Le long de ce contour, $\vec{B}$ est tangent au contour et de module constant $B(r)$.
+    $\oint_{\Gamma} \vec{B} \cdot \dd \vec{l} = B(r) (2\pi r)$.
+
+    \item \textbf{Courant enlacé} :
+    \begin{itemize}
+        \item \textbf{Cas 1 : Le contour de rayon $r$ est à l'intérieur du tore (c'est-à-dire que le cercle est contenu dans le matériau où sont enroulées les spires).}
+        Toutes les $N$ spires traversent la surface délimitée par le contour.
+        Selon la règle du tire-bouchon, si le contour est parcouru dans le sens positif, le courant $I$ est enlacé positivement si les spires sont enroulées de manière à ce que le courant total $N \times I$ traverse la surface dans le sens du pouce.
+        $I_{\text{enlacé}} = N I$.
+        \item \textbf{Cas 2 : Le contour de rayon $r$ est à l'extérieur du tore (ou à l'intérieur du "trou" du tore).}
+        Dans ce cas, aucune spire ne traverse la surface délimitée par le contour (ou bien toutes les spires la traversent une fois dans un sens et une fois dans l'autre, annulant le courant net).
+        $I_{\text{enlacé}} = 0$.
+    \end{itemize}
+
+    \item \textbf{Application du théorème} :
+    \begin{itemize}
+        \item \textbf{Cas 1 : À l'intérieur du tore (dans le matériau de la bobine)}
+        $B(r) (2\pi r) = \mu_0 N I$
+        \begin{equation*}
+            \vec{B}(r) = \frac{\mu_0 N I}{2\pi r} \vec{u}_{\theta}
+        \end{equation*}
+        Le champ n'est pas uniforme mais dépend de $1/r$. Pour un tore "mince" (rayon moyen grand par rapport à la section), on peut l'approximer comme uniforme.
+        \item \textbf{Cas 2 : À l'extérieur du tore (et dans le trou central)}
+        $B(r) (2\pi r) = \mu_0 \times 0$
+        \begin{equation*}
+            \vec{B}(r) = \vec{0}
+        \end{equation*}
+    \end{itemize}
+\end{enumerate}
+
+\section{Notions clés à retenir}
+
+\subsection*{Électrostatique}
+\begin{itemize}
+    \item \textbf{Symétries et invariances} des sources de $\vec{E}$ et leurs conséquences sur la forme de $\vec{E}$.
+    \item \textbf{Champ électrostatique conservatif} : Circulation nulle sur un contour fermé ($\oint \vec{E} \cdot \dd \vec{l} = 0$). Implique l'existence d'un potentiel $V$ tel que $\vec{E} = -\grad V$.
+    \item \textbf{Relation champ-potentiel} : $\vec{E} = -\grad V$.
+    \item \textbf{Surfaces équipotentielles} : Surfaces sur lesquelles $V = \text{constante}$. $\vec{E}$ est toujours orthogonal à ces surfaces.
+    \item \textbf{Énergie potentielle électrique} d'une charge $q$ dans un potentiel $V$: $E_p = qV$.
+    \item \textbf{Travail de la force électrostatique} : $W_{AB}(\vec{F}_e) = q(V_A - V_B)$.
+    \item \textbf{Théorème de Gauss} : $\oint_{\Sigma} \vec{E} \cdot \dd \vec{S} = \frac{Q_{\text{int}}}{\epsilon_0}$.
+    \item \textbf{Équations de Maxwell en électrostatique} :
+    \begin{itemize}
+        \item Maxwell-Gauss : $\div \vec{E} = \frac{\rho}{\epsilon_0}$
+        \item Maxwell-Faraday (stationnaire) : $\curl \vec{E} = \vec{0}$
+    \end{itemize}
+    \item \textbf{Équation de Poisson} : $\Delta V = -\frac{\rho}{\epsilon_0}$. (Si $\rho=0$, alors $\Delta V = 0$, équation de Laplace).
+    \item \textbf{Théorème de Green-Ostrogradski} : $\oint_{\Sigma} \vec{E} \cdot \dd \vec{S} = \iiint_V \div \vec{E} \dd V$.
+    \item \textbf{Condensateur} :
+    \begin{itemize}
+        \item Capacité d'un condensateur plan : $C = \frac{\epsilon_0 S}{e}$.
+        \item Densité volumique d'énergie électrique : $w_e = \frac{1}{2} \epsilon_0 E^2$.
+    \end{itemize}
+\end{itemize}
+
+\subsection*{Équilibres chimiques}
+\begin{itemize}
+    \item \textbf{Grandeurs de réaction} : Enthalpie de réaction ($\Delta_r H$), entropie de réaction ($\Delta_r S$), enthalpie libre de réaction ($\Delta_r G$). Connaître leurs définitions et leurs relations avec les grandeurs standards ($\Delta_r H^0$, $\Delta_r S^0$, $\Delta_r G^0$).
+    \item \textbf{Relation entre $\Delta_r G$ et $Q_r$ (quotient de réaction)} :
+    $\Delta_r G = \Delta_r G^0 + RT \ln(Q_r) = RT \ln \left( \frac{Q_r}{K^0(T)} \right)$.
+    \item \textbf{Relation entre $\Delta_r G^0$ et $K^0(T)$ (constante d'équilibre)} :
+    $\Delta_r G^0 = -RT \ln K^0(T)$.
+    \item \textbf{Relation de Van't Hoff} :
+    $\frac{\dd \ln K^0}{\dd T} = \frac{\Delta_r H^0}{RT^2}$.
+    \item \textbf{Critère d'évolution spontanée} : $\Delta_r G \dd\xi < 0$. À l'équilibre, $\Delta_r G = 0$.
+    \item \textbf{Approximation d'Ellingham} : $\Delta_r H^0$ et $\Delta_r S^0$ sont indépendants de la température.
+\end{itemize}
+
+\subsection*{Magnétostatique}
+\begin{itemize}
+    \item \textbf{Symétries et invariances} des distributions de courants sources de $\vec{B}$ et leurs conséquences sur la forme de $\vec{B}$.
+    \item \textbf{Théorème d'Ampère} : $\oint_{\Gamma} \vec{B} \cdot \dd \vec{l} = \mu_0 I_{\text{enlacé}}$.
+    \item \textbf{Calculs de champs magnétiques classiques} : Fil infini, cylindre plein, solénoïde infini, bobine torique.
+    \item \textbf{Équations de Maxwell en magnétostatique} :
+    \begin{itemize}
+        \item Maxwell-Thomson : $\div \vec{B} = 0$
+        \item Maxwell-Ampère (stationnaire) : $\curl \vec{B} = \mu_0 \vec{j}$
+    \end{itemize}
+    \item \textbf{Théorème de Stokes-Ampère} : $\oint_{\Gamma} \vec{B} \cdot \dd \vec{l} = \iint_S \curl \vec{B} \cdot \dd \vec{S}$.
+    \item \textbf{Densité volumique d'énergie magnétique} : $w_m = \frac{B^2}{2\mu_0}$.
+    \item \textbf{Densité volumique d'énergie électromagnétique} : $w_{em} = \frac{1}{2} \epsilon_0 E^2 + \frac{B^2}{2\mu_0}$.
+\end{itemize}
+
+\section{Erreurs fréquentes}
+
+\begin{itemize}
+    \item \textbf{Oubli des symétries} : Ne pas utiliser correctement les symétries de la distribution de charges ou de courants pour simplifier l'expression des champs $\vec{E}$ ou $\vec{B}$. C'est la première étape cruciale dans l'application des théorèmes de Gauss et d'Ampère.
+    \item \textbf{Mauvaise application des théorèmes intégraux} :
+    \begin{itemize}
+        \item \textbf{Gauss} : Erreur dans le calcul de la charge intérieure $Q_{\text{int}}$, notamment pour les distributions volumiques ou les charges ponctuelles.
+        \item \textbf{Ampère} : Erreur dans le calcul du courant enlacé $I_{\text{enlacé}}$, particulièrement pour les cylindres (distinction $r<R$ et $r>R$) ou les solénoïdes/bobines toriques.
+    \end{itemize}
+    \item \textbf{Erreur d'orientation} : \textbf{L'erreur la plus critique pour le théorème d'Ampère}. Oublier d'orienter le contour $\Gamma$ et la surface $S$ enlacée à l'aide de la règle du tire-bouchon (ou du tournevis). Cela peut conduire à un signe erroné du champ magnétique. Pour le théorème de Gauss, s'assurer que $\dd \vec{S}$ est bien un vecteur normal sortant de la surface fermée.
+    \item \textbf{Confusion entre les régimes} : Appliquer l'équation de Maxwell-Ampère complète (`$\curl \vec{B} = \mu_0 (\vec{j} + \epsilon_0 \pdv{\vec{E}}{t})$`) en magnétostatique, alors qu'en régime stationnaire, le terme de courant de déplacement ($\epsilon_0 \pdv{\vec{E}}{t}$) est nul.
+    \item \textbf{Confusion en électrostatique} : Oublier que $\curl \vec{E} = \vec{0}$ en électrostatique, ce qui justifie l'existence d'un potentiel scalaire.
+    \item \textbf{Notations vectorielles} : Manque de rigueur dans les notations vectorielles (absence de flèches ou de gras, confusion scalaire/vecteur).
+    \item \textbf{Chimie} : Confusion entre les grandeurs standard ($\Delta_r G^0$, $K^0$) et les grandeurs réelles ($\Delta_r G$, $Q_r$). Erreur dans l'utilisation de la relation de Van't Hoff ou le critère d'évolution.
+\end{itemize}
+
+\end{document}
