@@ -27,34 +27,34 @@ Le programme couvre des aspects fondamentaux de l'électromagnétisme (électros
 \subsection*{1) Démontrer le théorème de Gauss et le théorème d'Ampère à l'aide des équations de Maxwell ainsi que des théorèmes de Green-Ostrogradski et la Stokes-Ampère.}
 
 \subsubsection*{Démonstration du théorème de Gauss (électrostatique)}
-Le théorème de Gauss est une formulation intégrale de l'équation de Maxwell-Gauss. Il relie le flux du champ électrique $\vec{E}$ à travers une surface fermée à la charge électrique totale contenue dans le volume délimité par cette surface.
+Le théorème de Gauss est une formulation intégrale de l'équation de Maxwell-Gauss. Il relie le flux du champ électrique à travers une surface fermée à la charge électrique totale contenue dans le volume délimité par cette surface.
 
 \begin{enumerate}[(a)]
-    \item \textbf{Point de départ : Équation de Maxwell-Gauss (forme locale)}\\
+    \item \textbf{Point de départ : Équation de Maxwell-Gauss (forme locale)}
     En tout point de l'espace, la divergence du champ électrique $\vec{E}$ est proportionnelle à la densité volumique de charge $\rho$ en ce point :
     \begin{equation*}
         \div \vec{E} = \frac{\rho}{\epsilon_0}
     \end{equation*}
 
-    \item \textbf{Intégration sur un volume fermé $V$}\\
+    \item \textbf{Intégration sur un volume fermé $V$}
     Intégrons cette équation sur un volume $V$ délimité par une surface fermée $\Sigma$ :
     \begin{equation*}
         \iiint_V \div \vec{E} \dd V = \iiint_V \frac{\rho}{\epsilon_0} \dd V
     \end{equation*}
 
-    \item \textbf{Application du théorème de Green-Ostrogradski (théorème de la divergence)}\\
+    \item \textbf{Application du théorème de Green-Ostrogradski (théorème de la divergence)}
     Le théorème de Green-Ostrogradski stipule que l'intégrale de volume de la divergence d'un champ vectoriel est égale au flux de ce champ à travers la surface fermée qui délimite ce volume :
     \begin{equation*}
         \iiint_V \div \vec{E} \dd V = \oint_{\Sigma} \vec{E} \cdot \dd \vec{S}
     \end{equation*}
 
-    \item \textbf{Définition de la charge intérieure}\\
+    \item \textbf{Définition de la charge intérieure}
     La charge électrique totale $Q_{\text{int}}$ contenue dans le volume $V$ est donnée par :
     \begin{equation*}
         Q_{\text{int}} = \iiint_V \rho \dd V
     \end{equation*}
 
-    \item \textbf{Conclusion : Théorème de Gauss}\\
+    \item \textbf{Conclusion : Théorème de Gauss}
     En combinant ces résultats, on obtient le théorème de Gauss :
     \begin{equation*}
         \oint_{\Sigma} \vec{E} \cdot \dd \vec{S} = \frac{Q_{\text{int}}}{\epsilon_0}
@@ -65,33 +65,33 @@ Le théorème de Gauss est une formulation intégrale de l'équation de Maxwell-
 Le théorème d'Ampère (en régime stationnaire) est une formulation intégrale de l'équation de Maxwell-Ampère. Il relie la circulation du champ magnétique le long d'un contour fermé au courant électrique total enlacé par ce contour.
 
 \begin{enumerate}[(a)]
-    \item \textbf{Point de départ : Équation de Maxwell-Ampère (forme locale, régime stationnaire)}\\
+    \item \textbf{Point de départ : Équation de Maxwell-Ampère (forme locale, régime stationnaire)}
     En régime stationnaire (c'est-à-dire quand les champs électriques et magnétiques sont indépendants du temps, donc $\pdv{\vec{E}}{t} = \vec{0}$), l'équation de Maxwell-Ampère se simplifie à :
     \begin{equation*}
         \curl \vec{B} = \mu_0 \vec{j}
     \end{equation*}
     où $\vec{j}$ est la densité volumique de courant.
 
-    \item \textbf{Intégration sur une surface $S$}\\
+    \item \textbf{Intégration sur une surface $S$}
     Prenons une surface $S$ qui s'appuie sur un contour fermé $\Gamma$. Intégrons l'équation précédente sur cette surface :
     \begin{equation*}
         \iint_S \curl \vec{B} \cdot \dd \vec{S} = \iint_S \mu_0 \vec{j} \cdot \dd \vec{S}
     \end{equation*}
 
-    \item \textbf{Application du théorème de Stokes-Ampère (théorème du rotationnel)}\\
+    \item \textbf{Application du théorème de Stokes-Ampère (théorème du rotationnel)}
     Le théorème de Stokes-Ampère stipule que l'intégrale de surface du rotationnel d'un champ vectoriel est égale à la circulation de ce champ le long du contour fermé qui délimite cette surface :
     \begin{equation*}
         \iint_S \curl \vec{B} \cdot \dd \vec{S} = \oint_{\Gamma} \vec{B} \cdot \dd \vec{l}
     \end{equation*}
     L'orientation de $\dd \vec{S}$ par rapport à celle de $\dd \vec{l}$ doit respecter la règle du tire-bouchon.
 
-    \item \textbf{Définition du courant enlacé}\\
+    \item \textbf{Définition du courant enlacé}
     Le courant total $I_{\text{enlacé}}$ traversant la surface $S$ (et donc enlacé par le contour $\Gamma$) est donné par :
     \begin{equation*}
         I_{\text{enlacé}} = \iint_S \vec{j} \cdot \dd \vec{S}
     \end{equation*}
 
-    \item \textbf{Conclusion : Théorème d'Ampère}\\
+    \item \textbf{Conclusion : Théorème d'Ampère}
     En combinant ces résultats, on obtient le théorème d'Ampère :
     \begin{equation*}
         \oint_{\Gamma} \vec{B} \cdot \dd \vec{l} = \mu_0 I_{\text{enlacé}}
@@ -114,26 +114,23 @@ Pour chaque application, la démarche est la suivante :
 Considérons un fil rectiligne infini, orienté selon l'axe $Oz$, parcouru par un courant $I$ dans le sens $Oz$.
 
 \begin{enumerate}[(a)]
-    \item \textbf{Symétries} :\\
+    \item \textbf{Symétries} :
     La distribution de courant présente une symétrie cylindrique autour de l'axe $Oz$ et une invariance par translation le long de $Oz$. Par conséquent, le champ magnétique $\vec{B}$ ne peut dépendre que de la distance $r$ à l'axe et est purement azimutal : $\vec{B}(M) = B(r) \vec{u}_{\theta}$.
 
-    \item \textbf{Contour d'Ampère} :\\
+    \item \textbf{Contour d'Ampère} :
     Nous choisissons un cercle de rayon $r$, centré sur le fil, situé dans un plan perpendiculaire au fil ($z=\text{constante}$). Le contour est parcouru dans le sens positif (sens trigonométrique si on regarde depuis $z>0$).
 
-    \item \textbf{Circulation} :\\
+    \item \textbf{Circulation} :
     Le long de ce contour, $\vec{B}$ est tangent au contour et de module constant $B(r)$. $\dd \vec{l} = r \dd\theta \vec{u}_{\theta}$.
     \begin{equation*}
-        \oint_{\Gamma} \vec{B} \cdot \dd \vec{l}
-        = \oint_{\Gamma} B(r) \vec{u}_{\theta} \cdot (r \dd\theta \vec{u}_{\theta})
-        = B(r) \int_0^{2\pi} r \dd\theta
-        = B(r) (2\pi r)
+        \oint_{\Gamma} \vec{B} \cdot \dd \vec{l} = \oint_{\Gamma} B(r) \vec{u}_{\theta} \cdot (r \dd\theta \vec{u}_{\theta}) = B(r) \int_0^{2\pi} r \dd\theta = B(r) (2\pi r)
     \end{equation*}
 
-    \item \textbf{Courant enlacé} :\\
-    La surface délimitée par ce contour est un disque. Le courant $I$ traverse entièrement ce disque.\\
+    \item \textbf{Courant enlacé} :
+    La surface délimitée par ce contour est un disque. Le courant $I$ traverse entièrement ce disque.
     Selon la règle du tire-bouchon, si le contour est parcouru dans le sens positif, le courant $I$ est enlacé positivement s'il est dirigé vers les $z$ positifs. Donc $I_{\text{enlacé}} = I$.
 
-    \item \textbf{Application du théorème} :\\
+    \item \textbf{Application du théorème} :
     \begin{equation*}
         B(r) (2\pi r) = \mu_0 I
     \end{equation*}
@@ -144,42 +141,39 @@ Considérons un fil rectiligne infini, orienté selon l'axe $Oz$, parcouru par u
 \end{enumerate}
 
 \subsubsection*{3) Cylindre plein infini de rayon R parcouru par un courant I.}
-Considérons un cylindre plein infini de rayon $R$, orienté selon l'axe $Oz$, parcouru par un courant total $I$ uniformément réparti sur sa section. La densité de courant volumique est donc
-$j = \frac{I}{\pi R^2}$ pour $r \le R$, et nulle ailleurs.
+Considérons un cylindre plein infini de rayon $R$, orienté selon l'axe $Oz$, parcouru par un courant total $I$ uniformément réparti sur sa section. La densité de courant volumique est donc $j = \frac{I}{\pi R^2}$ pour $r \le R$, et nulle ailleurs.
 
 \begin{enumerate}[(a)]
-    \item \textbf{Symétries} :\\
+    \item \textbf{Symétries} :
     Mêmes symétries que le fil infini : symétrie cylindrique et invariance par translation. Le champ magnétique est donc $\vec{B}(M) = B(r) \vec{u}_{\theta}$.
 
-    \item \textbf{Contour d'Ampère} :\\
+    \item \textbf{Contour d'Ampère} :
     Nous choisissons un cercle de rayon $r$, centré sur l'axe du cylindre, dans un plan perpendiculaire à l'axe.
 
-    \item \textbf{Circulation} :\\
+    \item \textbf{Circulation} :
     Comme pour le fil infini, la circulation vaut $B(r) (2\pi r)$.
 
     \item \textbf{Courant enlacé} :
     \begin{itemize}
-        \item \textbf{Cas 1 : $r < R$ (intérieur du cylindre)}\\
-        Le courant enlacé est le courant qui traverse le disque de rayon $r$.\\
-        Puisque le courant est uniformément réparti, la densité surfacique de courant est constante.\\
-        $I_{\text{enlacé}} = J \times \text{aire du disque de rayon } r
-        = \frac{I}{\pi R^2} \times (\pi r^2)
-        = I \frac{r^2}{R^2}$.
-        \item \textbf{Cas 2 : $r \ge R$ (extérieur du cylindre)}\\
-        Le courant enlacé est le courant total $I$ qui traverse la section du cylindre.\\
+        \item \textbf{Cas 1 : $r < R$ (intérieur du cylindre)}
+        Le courant enlacé est le courant qui traverse le disque de rayon $r$.
+        Puisque le courant est uniformément réparti, la densité surfacique de courant est constante.
+        $I_{\text{enlacé}} = J \times \text{aire du disque de rayon } r = \frac{I}{\pi R^2} \times (\pi r^2) = I \frac{r^2}{R^2}$.
+        \item \textbf{Cas 2 : $r \ge R$ (extérieur du cylindre)}
+        Le courant enlacé est le courant total $I$ qui traverse la section du cylindre.
         $I_{\text{enlacé}} = I$.
     \end{itemize}
 
     \item \textbf{Application du théorème} :
     \begin{itemize}
-        \item \textbf{Cas 1 : $r < R$}\\
-        $B(r) (2\pi r) = \mu_0 I \frac{r^2}{R^2}$\\
+        \item \textbf{Cas 1 : $r < R$}
+        $B(r) (2\pi r) = \mu_0 I \frac{r^2}{R^2}$
         \begin{equation*}
             \vec{B}(r) = \frac{\mu_0 I r}{2\pi R^2} \vec{u}_{\theta}
         \end{equation*}
         Le champ croît linéairement avec $r$ à l'intérieur.
-        \item \textbf{Cas 2 : $r \ge R$}\\
-        $B(r) (2\pi r) = \mu_0 I$\\
+        \item \textbf{Cas 2 : $r \ge R$}
+        $B(r) (2\pi r) = \mu_0 I$
         \begin{equation*}
             \vec{B}(r) = \frac{\mu_0 I}{2\pi r} \vec{u}_{\theta}
         \end{equation*}
@@ -191,12 +185,12 @@ $j = \frac{I}{\pi R^2}$ pour $r \le R$, et nulle ailleurs.
 Considérons un solénoïde idéal infini d'axe $Oz$, constitué de $n$ spires par unité de longueur, parcourues par un courant $I$.
 
 \begin{enumerate}[(a)]
-    \item \textbf{Symétries} :\\
-    Le système présente une symétrie de révolution autour de l'axe $Oz$ et une invariance par translation le long de $Oz$.\\
-    Par superposition des champs créés par chaque spire (assimilée à un cercle), on déduit que le champ $\vec{B}$ est axial ($\vec{B} = B_z \vec{u}_z$) et ne dépend que de $r$ (distance à l'axe).\\
+    \item \textbf{Symétries} :
+    Le système présente une symétrie de révolution autour de l'axe $Oz$ et une invariance par translation le long de $Oz$.
+    Par superposition des champs créés par chaque spire (assimilée à un cercle), on déduit que le champ $\vec{B}$ est axial ($\vec{B} = B_z \vec{u}_z$) et ne dépend que de $r$ (distance à l'axe).
     L'hypothèse du solénoïde infini implique que le champ est uniforme à l'intérieur et nul à l'extérieur (ce dernier point est explicitement donné).
 
-    \item \textbf{Contour d'Ampère} :\\
+    \item \textbf{Contour d'Ampère} :
     Nous choisissons un rectangle ABCD dans un plan contenant l'axe $Oz$.
     \begin{itemize}
         \item Côté AB, de longueur $L$, parallèle à l'axe $Oz$, à l'intérieur du solénoïde.
@@ -205,14 +199,8 @@ Considérons un solénoïde idéal infini d'axe $Oz$, constitué de $n$ spires p
     \end{itemize}
     Le contour est parcouru dans le sens A $\rightarrow$ B $\rightarrow$ C $\rightarrow$ D $\rightarrow$ A.
 
-    \item \textbf{Circulation} :\\
-    \[
-    \oint_{\Gamma} \vec{B} \cdot \dd \vec{l}
-    = \int_A^B \vec{B} \cdot \dd \vec{l}
-    + \int_B^C \vec{B} \cdot \dd \vec{l}
-    + \int_C^D \vec{B} \cdot \dd \vec{l}
-    + \int_D^A \vec{B} \cdot \dd \vec{l}
-    \]
+    \item \textbf{Circulation} :
+    $\oint_{\Gamma} \vec{B} \cdot \dd \vec{l} = \int_A^B \vec{B} \cdot \dd \vec{l} + \int_B^C \vec{B} \cdot \dd \vec{l} + \int_C^D \vec{B} \cdot \dd \vec{l} + \int_D^A \vec{B} \cdot \dd \vec{l}$
     \begin{itemize}
         \item Sur AB : $\vec{B}$ est parallèle à $\dd \vec{l}$ et uniforme $B_z$. Donc $\int_A^B \vec{B} \cdot \dd \vec{l} = B_z L$.
         \item Sur BC et DA : $\vec{B}$ est axial, $\dd \vec{l}$ est radial. Donc $\vec{B} \cdot \dd \vec{l} = 0$. Les intégrales sont nulles.
@@ -220,11 +208,11 @@ Considérons un solénoïde idéal infini d'axe $Oz$, constitué de $n$ spires p
     \end{itemize}
     La circulation totale est donc $B_z L$.
 
-    \item \textbf{Courant enlacé} :\\
+    \item \textbf{Courant enlacé} :
     Le contour ABCD enlace toutes les spires qui traversent la surface définie par le rectangle. Sur une longueur $L$, il y a $nL$ spires. Si le courant $I$ circule dans le sens qui, par la règle du tire-bouchon, donne un champ $B_z$ positif, alors $I_{\text{enlacé}} = nLI$.
 
-    \item \textbf{Application du théorème} :\\
-    $B_z L = \mu_0 nLI$\\
+    \item \textbf{Application du théorème} :
+    $B_z L = \mu_0 nLI$
     \begin{equation*}
         \vec{B} = \mu_0 n I \vec{u}_z \quad \text{(à l'intérieur du solénoïde)}
     \end{equation*}
@@ -235,37 +223,37 @@ Considérons un solénoïde idéal infini d'axe $Oz$, constitué de $n$ spires p
 Une bobine torique est constituée de $N$ spires enroulées uniformément autour d'un tore (un anneau). Soit $r$ la distance à l'axe de symétrie du tore.
 
 \begin{enumerate}[(a)]
-    \item \textbf{Symétries} :\\
+    \item \textbf{Symétries} :
     Le système présente une symétrie de révolution autour de l'axe du tore. Le champ $\vec{B}$ est donc azimutal ($\vec{B} = B(r) \vec{u}_{\theta}$) et ne dépend que de la distance $r$ à l'axe du tore.
 
-    \item \textbf{Contour d'Ampère} :\\
+    \item \textbf{Contour d'Ampère} :
     Nous choisissons un cercle de rayon $r$, centré sur l'axe du tore, dans le plan médian du tore.
 
-    \item \textbf{Circulation} :\\
-    Le long de ce contour, $\vec{B}$ est tangent au contour et de module constant $B(r)$.\\
+    \item \textbf{Circulation} :
+    Le long de ce contour, $\vec{B}$ est tangent au contour et de module constant $B(r)$.
     $\oint_{\Gamma} \vec{B} \cdot \dd \vec{l} = B(r) (2\pi r)$.
 
     \item \textbf{Courant enlacé} :
     \begin{itemize}
-        \item \textbf{Cas 1 : Le contour de rayon $r$ est à l'intérieur du tore (c'est-à-dire que le cercle est contenu dans le matériau où sont enroulées les spires).}\\
-        Toutes les $N$ spires traversent la surface délimitée par le contour.\\
-        Selon la règle du tire-bouchon, si le contour est parcouru dans le sens positif, le courant $I$ est enlacé positivement si les spires sont enroulées de manière à ce que le courant total $N \times I$ traverse la surface dans le sens du pouce.\\
+        \item \textbf{Cas 1 : Le contour de rayon $r$ est à l'intérieur du tore (c'est-à-dire que le cercle est contenu dans le matériau où sont enroulées les spires).}
+        Toutes les $N$ spires traversent la surface délimitée par le contour.
+        Selon la règle du tire-bouchon, si le contour est parcouru dans le sens positif, le courant $I$ est enlacé positivement si les spires sont enroulées de manière à ce que le courant total $N \times I$ traverse la surface dans le sens du pouce.
         $I_{\text{enlacé}} = N I$.
-        \item \textbf{Cas 2 : Le contour de rayon $r$ est à l'extérieur du tore (ou à l'intérieur du "trou" du tore).}\\
-        Dans ce cas, aucune spire ne traverse la surface délimitée par le contour (ou bien toutes les spires la traversent une fois dans un sens et une fois dans l'autre, annulant le courant net).\\
+        \item \textbf{Cas 2 : Le contour de rayon $r$ est à l'extérieur du tore (ou à l'intérieur du "trou" du tore).}
+        Dans ce cas, aucune spire ne traverse la surface délimitée par le contour (ou bien toutes les spires la traversent une fois dans un sens et une fois dans l'autre, annulant le courant net).
         $I_{\text{enlacé}} = 0$.
     \end{itemize}
 
     \item \textbf{Application du théorème} :
     \begin{itemize}
-        \item \textbf{Cas 1 : À l'intérieur du tore (dans le matériau de la bobine)}\\
-        $B(r) (2\pi r) = \mu_0 N I$\\
+        \item \textbf{Cas 1 : À l'intérieur du tore (dans le matériau de la bobine)}
+        $B(r) (2\pi r) = \mu_0 N I$
         \begin{equation*}
             \vec{B}(r) = \frac{\mu_0 N I}{2\pi r} \vec{u}_{\theta}
         \end{equation*}
         Le champ n'est pas uniforme mais dépend de $1/r$. Pour un tore "mince" (rayon moyen grand par rapport à la section), on peut l'approximer comme uniforme.
-        \item \textbf{Cas 2 : À l'extérieur du tore (et dans le trou central)}\\
-        $B(r) (2\pi r) = \mu_0 \times 0$\\
+        \item \textbf{Cas 2 : À l'extérieur du tore (et dans le trou central)}
+        $B(r) (2\pi r) = \mu_0 \times 0$
         \begin{equation*}
             \vec{B}(r) = \vec{0}
         \end{equation*}
@@ -300,11 +288,11 @@ Une bobine torique est constituée de $N$ spires enroulées uniformément autour
 \subsection*{Équilibres chimiques}
 \begin{itemize}
     \item \textbf{Grandeurs de réaction} : Enthalpie de réaction ($\Delta_r H$), entropie de réaction ($\Delta_r S$), enthalpie libre de réaction ($\Delta_r G$). Connaître leurs définitions et leurs relations avec les grandeurs standards ($\Delta_r H^0$, $\Delta_r S^0$, $\Delta_r G^0$).
-    \item \textbf{Relation entre $\Delta_r G$ et $Q_r$ (quotient de réaction)} :\\
+    \item \textbf{Relation entre $\Delta_r G$ et $Q_r$ (quotient de réaction)} :
     $\Delta_r G = \Delta_r G^0 + RT \ln(Q_r) = RT \ln \left( \frac{Q_r}{K^0(T)} \right)$.
-    \item \textbf{Relation entre $\Delta_r G^0$ et $K^0(T)$ (constante d'équilibre)} :\\
+    \item \textbf{Relation entre $\Delta_r G^0$ et $K^0(T)$ (constante d'équilibre)} :
     $\Delta_r G^0 = -RT \ln K^0(T)$.
-    \item \textbf{Relation de Van't Hoff} :\\
+    \item \textbf{Relation de Van't Hoff} :
     $\frac{\dd \ln K^0}{\dd T} = \frac{\Delta_r H^0}{RT^2}$.
     \item \textbf{Critère d'évolution spontanée} : $\Delta_r G \dd\xi < 0$. À l'équilibre, $\Delta_r G = 0$.
     \item \textbf{Approximation d'Ellingham} : $\Delta_r H^0$ et $\Delta_r S^0$ sont indépendants de la température.
@@ -335,7 +323,7 @@ Une bobine torique est constituée de $N$ spires enroulées uniformément autour
         \item \textbf{Ampère} : Erreur dans le calcul du courant enlacé $I_{\text{enlacé}}$, particulièrement pour les cylindres (distinction $r<R$ et $r>R$) ou les solénoïdes/bobines toriques.
     \end{itemize}
     \item \textbf{Erreur d'orientation} : \textbf{L'erreur la plus critique pour le théorème d'Ampère}. Oublier d'orienter le contour $\Gamma$ et la surface $S$ enlacée à l'aide de la règle du tire-bouchon (ou du tournevis). Cela peut conduire à un signe erroné du champ magnétique. Pour le théorème de Gauss, s'assurer que $\dd \vec{S}$ est bien un vecteur normal sortant de la surface fermée.
-    \item \textbf{Confusion entre les régimes} : Appliquer l'équation de Maxwell-Ampère complète ($\curl \vec{B} = \mu_0 (\vec{j} + \epsilon_0 \pdv{\vec{E}}{t})$) en magnétostatique, alors qu'en régime stationnaire, le terme de courant de déplacement ($\epsilon_0 \pdv{\vec{E}}{t}$) est nul.
+    \item \textbf{Confusion entre les régimes} : Appliquer l'équation de Maxwell-Ampère complète (`$\curl \vec{B} = \mu_0 (\vec{j} + \epsilon_0 \pdv{\vec{E}}{t})$`) en magnétostatique, alors qu'en régime stationnaire, le terme de courant de déplacement ($\epsilon_0 \pdv{\vec{E}}{t}$) est nul.
     \item \textbf{Confusion en électrostatique} : Oublier que $\curl \vec{E} = \vec{0}$ en électrostatique, ce qui justifie l'existence d'un potentiel scalaire.
     \item \textbf{Notations vectorielles} : Manque de rigueur dans les notations vectorielles (absence de flèches ou de gras, confusion scalaire/vecteur).
     \item \textbf{Chimie} : Confusion entre les grandeurs standard ($\Delta_r G^0$, $K^0$) et les grandeurs réelles ($\Delta_r G$, $Q_r$). Erreur dans l'utilisation de la relation de Van't Hoff ou le critère d'évolution.
