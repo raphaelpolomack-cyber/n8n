@@ -1,0 +1,148 @@
+\documentclass[12pt,a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[french]{babel}
+\usepackage{amsmath,amssymb}
+\usepackage{mathtools}
+\usepackage{siunitx}
+\usepackage{esint}
+\usepackage{enumitem}
+\usepackage{geometry}
+\geometry{a4paper, left=2.5cm, right=2.5cm, top=2.5cm, bottom=2.5cm}
+
+% Definitions mathematiques
+\DeclareMathOperator{\rot}{rot}
+\DeclareMathOperator{\diver}{div}
+\newcommand{\dd}[1]{\mathrm{d}#1}
+\newcommand{\norm}[1]{\left\|#1\right\|}
+\newcommand{\vect}[1]{\vec{#1}}
+
+\title{Correction de colle}
+\author{Correction type}
+\date{\today}
+
+\begin{document}
+\maketitle
+
+\section{Réponses aux questions de cours}
+
+\begin{enumerate}[label=\textbf{Question \arabic*)}]
+    \item \textbf{Que représente l'ARQS ? Définir le courant de déplacement. Dans quelles conditions est-il possible de négliger le courant de déplacement ?}
+    \begin{itemize}
+        \item \textbf{L'Approximation des Régimes Quasi Stationnaires (ARQS)} est une simplification des équations de Maxwell utilisée lorsque les phénomènes électromagnétiques varient dans le temps, mais suffisamment lentement pour que les effets de propagation (liés à la vitesse finie de la lumière) soient négligeables à l'échelle du système étudié. Cela signifie que l'on peut considérer que les champs électriques et magnétiques s'établissent quasi instantanément dans tout l'espace, comme si la vitesse de la lumière était infinie. Mathématiquement, cela revient à négliger certains termes dans les équations de Maxwell qui traduisent ces phénomènes de propagation.
+        \item Le \textbf{courant de deplacement} correspond au terme $\epsilon_0 \frac{\partial \vect{E}}{\partial t}$ dans l'équation de Maxwell-Ampère généralisée. Ce n'est pas un courant de charges mobiles (courant de conduction), mais une variation temporelle du flux du champ électrique. Il agit comme une source de champ magnétique, au même titre qu'un courant de conduction. Il a été introduit par Maxwell pour assurer la cohérence des équations de l'électromagnétisme (notamment la conservation de la charge) en régime variable.
+        \item Il est possible de \textbf{neglinger le courant de deplacement} devant le courant de conduction $\vect{j}$ lorsque la fréquence des variations du champ est faible et/ou que la conductivité du milieu est élevée. Plus précisément, on le néglige lorsque la norme du courant de conduction est très supérieure à celle du courant de deplacement : $\norm{\vect{j}} \gg \norm{\epsilon_0 \frac{\partial \vect{E}}{\partial t}}$. Pour un conducteur ohmique ($\vect{j} = \sigma \vect{E}$), cette condition est souvent exprimée en termes de temps caractéristique de relaxation $\tau_{RC} = \frac{\epsilon}{\sigma}$ et de période $T$ des variations. L'ARQS est valide si $T \gg \tau_{RC}$ (ou de manière équivalente si la pulsation $\omega \ll \frac{\sigma}{\epsilon}$).
+    \end{itemize}
+
+    \item \textbf{Montrer que le champ magnétique est à flux conservatif à partir d'une équation de Maxwell.}
+    L'équation de Maxwell-Thomson (ou équation de conservation du flux magnétique) s'écrit sous forme locale :
+    $$ \diver \vect{B} = 0 $$
+    Cette équation signifie que le champ magnétique est à flux conservatif. En effet, d'après le théorème de la divergence (ou de Gauss-Ostrogradsky), pour tout volume fermé $V$ délimité par une surface fermée $S$, on a :
+    $$ \iiint_V (\diver \vect{B}) \dd{V} = \iint_S \vect{B} \cdot \dd{\vect{S}} $$
+    Puisque $\diver \vect{B} = 0$, il s'ensuit que :
+    $$ \iint_S \vect{B} \cdot \dd{\vect{S}} = 0 $$
+    Ceci signifie que le flux magnétique $\Phi_B = \iint_S \vect{B} \cdot \dd{\vect{S}}$ à travers toute surface fermée $S$ est nul. Il n'existe pas de "charges magnétiques" ou monopôles magnétiques qui pourraient être sources ou puits de champ magnétique. Les lignes de champ magnétique sont toujours fermées. Le champ magnétique est donc à flux conservatif.
+
+    \item \textbf{Etablir la loi de Faraday à partir d'une équation de Maxwell.}
+    La loi de Faraday, dans sa formulation intégrale, relie la force électromotrice induite à la variation du flux magnétique. Elle peut être établie à partir de l'équation de Maxwell-Faraday sous forme locale :
+    $$ \rot \vect{E} = -\frac{\partial \vect{B}}{\partial t} $$
+    Considérons une surface $S$ s'appuyant sur un contour fermé $\Gamma$. Calculons la circulation du champ électrique $\vect{E}$ le long de ce contour $\Gamma$, qui représente la force électromotrice $\mathcal{E}$ induite :
+    $$ \mathcal{E} = \oint_\Gamma \vect{E} \cdot \dd{\vect{l}} $$
+    D'après le théorème de Stokes, on peut relier cette circulation au flux du rotationnel de $\vect{E}$ à travers la surface $S$ :
+    $$ \oint_\Gamma \vect{E} \cdot \dd{\vect{l}} = \iint_S (\rot \vect{E}) \cdot \dd{\vect{S}} $$
+    En substituant l'expression de $\rot \vect{E}$ donnée par l'équation de Maxwell-Faraday :
+    $$ \oint_\Gamma \vect{E} \cdot \dd{\vect{l}} = \iint_S \left(-\frac{\partial \vect{B}}{\partial t}\right) \cdot \dd{\vect{S}} $$
+    Si le contour $\Gamma$ (et donc la surface $S$) est fixe dans le temps, la dérivation temporelle peut être sortie de l'intégrale spatiale :
+    $$ \oint_\Gamma \vect{E} \cdot \dd{\vect{l}} = -\frac{\dd{}}{\dd{t}} \left( \iint_S \vect{B} \cdot \dd{\vect{S}} \right) $$
+    Le terme $\iint_S \vect{B} \cdot \dd{\vect{S}}$ est le flux magnétique $\Phi_B$ à travers la surface $S$.
+    On obtient donc la loi de Faraday sous sa forme intégrale pour un contour fixe :
+    $$ \mathcal{E} = -\frac{\dd{\Phi_B}}{\dd{t}} $$
+    Cette loi indique qu'une variation du flux magnétique à travers un circuit induit une force électromotrice dans ce circuit.
+
+    \item \textbf{Etablir le théorème d'Ampère généralisé (en régime variable hors ARQS) à partir d'une équation de Maxwell.}
+    Le théorème d'Ampère généralisé, valable en régime variable et incluant le courant de deplacement, est directement dérivé de l'équation de Maxwell-Ampère sous forme locale :
+    $$ \rot \vect{B} = \mu_0 \left(\vect{j} + \epsilon_0 \frac{\partial \vect{E}}{\partial t}\right) $$
+    Considérons un contour fermé $\Gamma$ et une surface $S$ quelconque s'appuyant sur ce contour. La circulation du champ magnétique $\vect{B}$ le long de $\Gamma$ est donnée par :
+    $$ \mathcal{C} = \oint_\Gamma \vect{B} \cdot \dd{\vect{l}} $$
+    D'après le théorème de Stokes, on peut relier cette circulation au flux du rotationnel de $\vect{B}$ à travers la surface $S$ :
+    $$ \oint_\Gamma \vect{B} \cdot \dd{\vect{l}} = \iint_S (\rot \vect{B}) \cdot \dd{\vect{S}} $$
+    En substituant l'expression de $\rot \vect{B}$ donnée par l'équation de Maxwell-Ampère :
+    $$ \oint_\Gamma \vect{B} \cdot \dd{\vect{l}} = \iint_S \left[ \mu_0 \left(\vect{j} + \epsilon_0 \frac{\partial \vect{E}}{\partial t}\right) \right] \cdot \dd{\vect{S}} $$
+    En séparant les termes :
+    $$ \oint_\Gamma \vect{B} \cdot \dd{\vect{l}} = \mu_0 \iint_S \vect{j} \cdot \dd{\vect{S}} + \mu_0 \epsilon_0 \iint_S \frac{\partial \vect{E}}{\partial t} \cdot \dd{\vect{S}} $$
+    Le premier terme $\iint_S \vect{j} \cdot \dd{\vect{S}}$ représente le courant de conduction $I_{\text{conduction}}$ (ou $I_{\text{enlace}}$) qui traverse la surface $S$.
+    Le second terme $\iint_S \epsilon_0 \frac{\partial \vect{E}}{\partial t} \cdot \dd{\vect{S}}$ représente le flux du courant de deplacement à travers la surface $S$, souvent noté $I_{\text{deplacement}}$.
+    On obtient ainsi le théorème d'Ampère généralisé :
+    $$ \oint_\Gamma \vect{B} \cdot \dd{\vect{l}} = \mu_0 \left( I_{\text{conduction}} + I_{\text{deplacement}} \right) = \mu_0 \left( I_{\text{enlace}} + \epsilon_0 \frac{\dd{\Phi_E}}{\dd{t}} \right) $$
+    où $\Phi_E = \iint_S \vect{E} \cdot \dd{\vect{S}}$ est le flux du champ électrique.
+
+    \item \textbf{Etablir à partir des équations de Maxwell, l'équation de conservation de la charge. Que devient-elle dans le cadre de l'ARQS ?}
+    Pour établir l'équation de conservation de la charge, nous utilisons l'équation de Maxwell-Ampère généralisée et l'équation de Maxwell-Gauss.
+    L'équation de Maxwell-Ampère est :
+    $$ \rot \vect{B} = \mu_0 \left(\vect{j} + \epsilon_0 \frac{\partial \vect{E}}{\partial t}\right) $$
+    Prenons la divergence des deux membres de cette équation. Nous savons que la divergence d'un rotationnel est toujours nulle ($\diver (\rot \vect{A}) = 0$ pour tout champ vectoriel $\vect{A}$). Donc :
+    $$ \diver (\rot \vect{B}) = 0 = \mu_0 \left(\diver \vect{j} + \epsilon_0 \diver \left(\frac{\partial \vect{E}}{\partial t}\right)\right) $$
+    Puisque $\mu_0 \neq 0$, on a :
+    $$ \diver \vect{j} + \epsilon_0 \diver \left(\frac{\partial \vect{E}}{\partial t}\right) = 0 $$
+    On peut intervertir l'opérateur divergence et la dérivée partielle par rapport au temps :
+    $$ \diver \vect{j} + \epsilon_0 \frac{\partial}{\partial t} (\diver \vect{E}) = 0 $$
+    Maintenant, utilisons l'équation de Maxwell-Gauss :
+    $$ \diver \vect{E} = \frac{\rho}{\epsilon_0} $$
+    En substituant $\diver \vect{E}$ dans l'équation précédente :
+    $$ \diver \vect{j} + \epsilon_0 \frac{\partial}{\partial t} \left(\frac{\rho}{\epsilon_0}\right) = 0 $$
+    Ce qui simplifie en :
+    $$ \diver \vect{j} + \frac{\partial \rho}{\partial t} = 0 $$
+    C'est l'\textbf{equation locale de conservation de la charge}. Elle exprime que la variation de la densité de charge dans un volume est compensée par un flux de courant sortant de ce volume.
+
+    \textbf{Dans le cadre de l'ARQS :}
+    Dans l'ARQS, le courant de deplacement $\epsilon_0 \frac{\partial \vect{E}}{\partial t}$ est négligé devant le courant de conduction $\vect{j}$ dans l'équation de Maxwell-Ampère. L'équation devient alors :
+    $$ \rot \vect{B} = \mu_0 \vect{j} $$
+    Si l'on prend la divergence de cette équation simplifiée :
+    $$ \diver (\rot \vect{B}) = 0 = \mu_0 \diver \vect{j} $$
+    Puisque $\mu_0 \neq 0$, il s'ensuit que :
+    $$ \diver \vect{j} = 0 $$
+    En reportant ce résultat dans l'équation de conservation de la charge :
+    $$ 0 + \frac{\partial \rho}{\partial t} = 0 $$
+    Donc, dans le cadre de l'ARQS (où le courant de deplacement est négligé), la densité de charge $\rho$ est considérée comme \textbf{independante du temps} ($\frac{\partial \rho}{\partial t} = 0$). Cela signifie que les accumulations ou disparitions de charge locales sont suffisamment lentes ou insignifiantes pour être considérées comme nulles.
+\end{enumerate}
+
+\section{Notions clés à retenir}
+\begin{itemize}
+    \item \textbf{Les quatre equations de Maxwell} : Connaître les formes locale et intégrale de chaque équation, ainsi que leur signification physique.
+    \begin{itemize}
+        \item Maxwell-Gauss : $\diver \vect{E} = \frac{\rho}{\epsilon_0}$ (sources du champ électrique, existence de charges).
+        \item Maxwell-Thomson : $\diver \vect{B} = 0$ (pas de monopôles magnétiques, flux conservatif).
+        \item Maxwell-Faraday : $\rot \vect{E} = -\frac{\partial \vect{B}}{\partial t}$ (induction électromagnétique).
+        \item Maxwell-Ampère-Maxwell : $\rot \vect{B} = \mu_0 \left(\vect{j} + \epsilon_0 \frac{\partial \vect{E}}{\partial t}\right)$ (sources du champ magnétique : courants de conduction et de deplacement).
+    \end{itemize}
+    \item \textbf{Theoreme d'Ampere} : Maîtrise de son application pour le calcul de champs magnétiques (fil, cylindre, solénoïde, bobine torique), avec une attention particulière à l'orientation du contour et de la surface (règle du tire-bouchon).
+    \item \textbf{Courant de deplacement} : Sa définition, son rôle pour la cohérence des équations de Maxwell et dans la propagation des ondes électromagnétiques.
+    \item \textbf{L'ARQS (Approximation des Regimes Quasi Stationnaires)} : Ses conditions de validité et ses implications (négligence du courant de deplacement, vitesse de propagation infinie, $\frac{\partial \rho}{\partial t} = 0$).
+    \item \textbf{Equation de conservation de la charge} : Relation fondamentale entre la divergence du courant et la variation temporelle de la densité de charge, dérivée des équations de Maxwell.
+    \item \textbf{Thermodynamique chimique} :
+    \begin{itemize}
+        \item \textbf{Grandeurs de reaction} : $\Delta_r H$, $\Delta_r S$, $\Delta_r G$ et leurs formes standards.
+        \item \textbf{Critere d'evolution spontanee} : $\Delta_r G \cdot \dd{\xi} < 0$.
+        \item \textbf{Relation entre $\Delta_r G^0$ et $K^0(T)$} : $\Delta_r G^0 = -RT \ln K^0(T)$.
+        \item \textbf{Influence de la temperature sur $K^0(T)$} : Loi de Van't Hoff.
+        \item \textbf{Principe de Le Chatelier} : Prédiction de l'évolution d'un equilibre sous l'effet d'une perturbation (température, pression, concentration).
+    \end{itemize}
+\end{itemize}
+
+\section{Erreurs fréquentes}
+\begin{itemize}
+    \item \textbf{Confusion entre ARQS et regime stationnaire} : En régime stationnaire, $\frac{\partial}{\partial t} = 0$ partout. En ARQS, les dérivées temporelles existent mais sont considérées "lentes" de sorte que le courant de deplacement peut être négligé et les effets de propagation ignorés.
+    \item \textbf{Oubli du courant de deplacement} : Appliquer la forme simplifiée du théorème d'Ampère ($\oint_\Gamma \vect{B} \cdot \dd{\vect{l}} = \mu_0 I_{\text{enlace}}$) dans un régime variable où le courant de deplacement n'est pas négligeable.
+    \item \textbf{Signes dans les equations de Maxwell} : Des erreurs fréquentes apparaissent avec les signes, notamment dans Maxwell-Faraday ($\rot \vect{E} = -\frac{\partial \vect{B}}{\partial t}$).
+    \item \textbf{Mauvaise utilisation du theoreme d'Ampere} :
+    \begin{itemize}
+        \item Application à des situations sans symétrie adéquate.
+        \item Erreur d'orientation entre le contour d'intégration $\Gamma$ et la surface $S$ (règle du tire-bouchon).
+        \item Oubli du $\mu_0$.
+    \end{itemize}
+    \item \textbf{Accents dans les indices mathematiques} : Utiliser des accents dans les indices mathématiques (ex: utiliser des indices sans accents en mode mathematique). Cela génère des erreurs de compilation LaTeX. Toujours utiliser `\text{...}` et retirer les accents.
+    \item \textbf{Syntaxe `\textbf` incorrecte} : Ne pas placer l'argument entre accolades (ex: \textbf{Le} texte au lieu de \textbf{Le texte}).
+    \item \textbf{Confusion $\Delta_r G$ et $\Delta_r G^0$} : Le critère d'évolution spontanée est basé sur $\Delta_r G$, tandis que $\Delta_r G^0$ est lié à la constante d'equilibre $K^0$.
+    \item \textbf{Hypotheses de l'approximation d'Ellingham} : Oublier que cette approximation suppose $\Delta_r H^0$ et $\Delta_r S^0$ indépendants de la température.
+\end{itemize}
+
+\end{document}
