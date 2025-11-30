@@ -1,0 +1,256 @@
+\documentclass[12pt,a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[french]{babel}
+\usepackage{amsmath,amssymb}
+\usepackage{mathtools}
+\usepackage{siunitx}
+\usepackage{esint}
+\usepackage{enumitem}
+\usepackage{geometry}
+\geometry{a4paper, left=2.5cm, right=2.5cm, top=2.5cm, bottom=2.5cm}
+
+% Definitions mathematiques
+\DeclareMathOperator{\rot}{rot}
+\DeclareMathOperator{\diver}{div}
+\newcommand{\dd}[1]{\mathrm{d}#1}
+\newcommand{\norm}[1]{\left\|#1\right\|}
+\newcommand{\vect}[1]{\vec{#1}}
+
+\title{Correction de colle}
+\author{Correction type}
+\date{\today}
+
+
+% Definition robuste de grad
+\providecommand{\grad}{\nabla}
+\begin{document}
+\maketitle
+
+\section{Réponses aux questions de cours}
+
+\subsection{Optimisation d'un procédé chimique}
+
+\textbf{Critère d'évolution spontanée :}
+L'évolution spontanée d'un système chimique est régie par le second principe de la thermodynamique. À température et pression constantes, le critère d'évolution est :
+\begin{equation*}
+    \dd{G} = \Delta_r G \dd{\xi} < 0
+\end{equation*}
+où $\Delta_r G$ est l'enthalpie libre de réaction et $\xi$ est l'avancement de la réaction.
+De manière équivalente, en termes de quotient réactionnel $Q_r$ :
+\begin{equation*}
+    \frac{\dd{Q_r}}{Q_r} \cdot \dd{\xi} < 0
+\end{equation*}
+Un système évolue spontanément pour minimiser son enthalpie libre ou pour atteindre l'équilibre où $\Delta_r G = 0$.
+
+\textbf{Modification de la valeur de $K^\circ$ (constante d'équilibre) :}
+La constante d'équilibre $K^\circ$ dépend uniquement de la température. Sa variation avec la température est donnée par la \textbf{loi de Van't Hoff} :
+\begin{equation*}
+    \left(\frac{\partial \ln K^\circ}{\partial T}\right)_P = \frac{\Delta_r H^\circ}{R T^2}
+\end{equation*}
+où $\Delta_r H^\circ$ est l'enthalpie standard de réaction.
+\begin{itemize}
+    \item Pour une réaction endothermique ($\Delta_r H^\circ > 0$), $K^\circ$ augmente avec $T$.
+    \item Pour une réaction exothermique ($\Delta_r H^\circ < 0$), $K^\circ$ diminue avec $T$.
+\end{itemize}
+
+\textbf{Modification de la valeur du quotient réactionnel $Q_r$ :}
+Le quotient réactionnel $Q_r$ peut être modifié par plusieurs facteurs, déplaçant l'équilibre selon la \textbf{loi de Le Châtelier} (le système réagit pour s'opposer à la perturbation) :
+\begin{itemize}
+    \item \textbf{Influence de la pression :} Concerne les réactions impliquant des gaz. Si la pression augmente, l'équilibre se déplace dans le sens qui diminue le nombre de moles de gaz.
+    \item \textbf{Introduction d'un constituant actif :}
+    \begin{itemize}
+        \item Si on ajoute un réactif, $Q_r$ diminue, l'équilibre se déplace dans le sens direct.
+        \item Si on ajoute un produit, $Q_r$ augmente, l'équilibre se déplace dans le sens inverse.
+        \item Si on retire un constituant, l'équilibre se déplace pour le reformer.
+    \end{itemize}
+    \item \textbf{Introduction d'un constituant inerte :} Si le volume est constant, l'introduction d'un inerte n'affecte pas les pressions partielles et donc pas $Q_r$. Si la pression totale est constante (volume variable), l'introduction d'un inerte diminue les pressions partielles des réactifs/produits, et l'équilibre se déplace dans le sens d'une augmentation du nombre de moles de gaz (analogue à une diminution de pression).
+\end{itemize}
+
+\subsection{Électromagnétisme V : Les régimes variables}
+
+\textbf{Courants de déplacement et ARQS magnétique :}
+Les \textbf{courants de déplacement} sont définis par $\vect{J_d} = \frac{\partial \vect{D}}{\partial t} = \varepsilon_0 \frac{\partial \vect{E}}{\partial t}$ (dans le vide ou un milieu linéaire homogène sans charges libres). Ils représentent la variation temporelle du champ électrique et sont une source de champ magnétique, au même titre que les courants de conduction.
+L'\textbf{ARQS magnétique} (Approximation des Régimes Quasi-Stationnaires magnétiques) est valide lorsque les courants de déplacement sont négligeables devant les courants de conduction, soit $\norm{\vect{J_d}} \ll \norm{\vect{J_c}}$. Cela est généralement vrai si les dimensions du système $L$ sont petites devant la longueur d'onde $\lambda = cT$ de l'onde électromagnétique associée aux variations temporelles (où $T$ est une période caractéristique, $c$ la célérité de la lumière).
+
+\textbf{Compatibilité des équations de Maxwell avec la conservation de la charge :}
+L'équation de conservation de la charge est $\diver \vect{J} + \frac{\partial \rho}{\partial t} = 0$.
+Partons de l'équation de Maxwell-Ampère : $\rot \vect{H} = \vect{J} + \frac{\partial \vect{D}}{\partial t}$.
+En prenant la divergence des deux membres :
+\begin{equation*}
+    \diver (\rot \vect{H}) = \diver \vect{J} + \diver \left(\frac{\partial \vect{D}}{\partial t}\right)
+\end{equation*}
+Or, la divergence d'un rotationnel est toujours nulle : $\diver (\rot \vect{H}) = 0$.
+De plus, on peut intervertir les opérateurs de divergence et de dérivation temporelle : $\diver \left(\frac{\partial \vect{D}}{\partial t}\right) = \frac{\partial}{\partial t} (\diver \vect{D})$.
+En utilisant l'équation de Maxwell-Gauss, $\diver \vect{D} = \rho$, on obtient :
+\begin{equation*}
+    0 = \diver \vect{J} + \frac{\partial \rho}{\partial t}
+\end{equation*}
+Ceci est bien l'équation de conservation de la charge. Les équations de Maxwell sont donc compatibles avec la conservation de la charge.
+
+\textbf{Simplification des équations de Maxwell dans l'ARQS magnétique (courants de déplacement négligeables) :}
+Lorsque les courants de déplacement sont négligeables ($\frac{\partial \vect{D}}{\partial t} \approx \vect{0}$), les équations de Maxwell se simplifient :
+\begin{itemize}
+    \item Maxwell-Gauss : $\diver \vect{D} = \rho \implies \diver \vect{E} = \frac{\rho}{\varepsilon_0}$ (pas de changement majeur pour $\vect{E}$)
+    \item Maxwell-Flux : $\diver \vect{B} = 0$ (pas de changement)
+    \item Maxwell-Faraday : $\rot \vect{E} = - \frac{\partial \vect{B}}{\partial t}$ (pas de changement)
+    \item Maxwell-Ampère : $\rot \vect{H} = \vect{J}$ (le terme de courant de déplacement disparaît)
+\end{itemize}
+L'équation de conservation de la charge devient $\diver \vect{J} + \frac{\partial \rho}{\partial t} = 0$. Dans l'ARQS magnétique, le terme $\frac{\partial \rho}{\partial t}$ est souvent considéré comme faible ou nul, ce qui implique que la densité de charge reste quasi-stationnaire. On a alors $\diver \vect{J} \approx 0$.
+
+\textbf{Extension du domaine de validité des expressions des champs magnétiques obtenues en régime stationnaire :}
+Dans l'ARQS magnétique, puisque $\rot \vect{H} = \vect{J}$ (comme en magnétostatique) et $\diver \vect{B} = 0$, les champs magnétiques $\vect{B}$ et $\vect{H}$ peuvent être calculés à chaque instant $t$ comme s'ils étaient en régime stationnaire, en utilisant les formules de la magnétostatique mais avec des courants $\vect{J}$ qui dépendent du temps. Par exemple, la loi de Biot et Savart ou le théorème d'Ampère peuvent être appliqués à un instant $t$ donné.
+
+\textbf{Loi de Faraday-Lenz (équation locale et intégrale) :}
+La relation entre la circulation du champ électrique et la dérivée temporelle du flux magnétique est la \textbf{loi de Faraday-Lenz} :
+\begin{itemize}
+    \item \textbf{Forme locale :}
+    \begin{equation*}
+        \rot \vect{E} = - \frac{\partial \vect{B}}{\partial t}
+    \end{equation*}
+    \item \textbf{Forme intégrale (théorème de l'induction) :}
+    En intégrant l'équation locale sur une surface $\mathcal{S}$ s'appuyant sur un contour $\mathcal{C}$, et en utilisant le théorème de Stokes :
+    \begin{equation*}
+        \oint_{\mathcal{C}} \vect{E} \cdot \dd{\vect{l}} = - \frac{\dd{}}{\dd{t}} \iint_{\mathcal{S}} \vect{B} \cdot \dd{\vect{S}} = - \frac{\dd{\Phi}}{\dd{t}} = e_{\text{ind}}
+    \end{equation*}
+    où $e_{\text{ind}}$ est la force électromotrice induite le long du contour $\mathcal{C}$ et $\Phi$ est le flux magnétique à travers la surface $\mathcal{S}$. Le signe moins indique que le courant induit s'oppose à la variation du flux (loi de Lenz).
+\end{itemize}
+
+\textbf{Géométrie des courants de Foucault dans un conducteur cylindrique :}
+Pour un conducteur cylindrique soumis à un champ magnétique $\vect{B}(t) = B_0 \cos(\omega t) \vect{u_z}$ parallèle à son axe et uniforme, des courants de Foucault sont induits.
+Ces courants se manifestent sous forme de boucles circulaires (des "tourbillons") dans les plans perpendiculaires à l'axe du cylindre ($xy$). Leur centre est sur l'axe du cylindre. Ils créent un champ magnétique qui s'oppose à la variation du flux du champ excitateur à travers les boucles, selon la loi de Lenz. La densité de courant est maximale à la périphérie du cylindre et diminue vers l'axe.
+
+\textbf{Puissance dissipée par effet Joule et rôle du feuilletage :}
+La puissance dissipée par effet Joule dans un conducteur est donnée par :
+\begin{equation*}
+    P_J = \int_V \vect{J} \cdot \vect{E} \, \dd{V} = \int_V \sigma \norm{\vect{E}}^2 \, \dd{V}
+\end{equation*}
+où $\sigma$ est la conductivité électrique et $\vect{E}$ est le champ électrique induit. En négligeant le champ propre, le champ électrique induit $\vect{E}$ est proportionnel à la dérivée temporelle du champ magnétique extérieur et aux dimensions du conducteur.
+Le \textbf{rôle du feuilletage} (découper le conducteur en fines lamelles isolées les unes des autres et orientées parallèlement au champ appliqué) est de réduire la taille des boucles de courants de Foucault. En réduisant les dimensions caractéristiques des chemins de conduction, la force électromotrice induite dans chaque boucle est diminuée. De plus, les résistances de ces boucles individuelles sont augmentées car les courants sont contraints de circuler dans des sections plus petites (ou les surfaces de boucles sont réduites). Globalement, cela réduit considérablement l'amplitude des courants de Foucault et donc la puissance dissipée par effet Joule.
+
+\textbf{Énergie magnétique d'une bobine et de bobines couplées :}
+\begin{itemize}
+    \item \textbf{Une bobine seule :} L'énergie magnétique emmagasinée dans une bobine d'inductance propre $L$ parcourue par un courant $I$ est :
+    \begin{equation*}
+        E_m = \frac{1}{2} L I^2
+    \end{equation*}
+    \item \textbf{Deux bobines couplées :} Pour deux bobines d'inductances propres $L_1$ et $L_2$, parcourues par des courants $I_1$ et $I_2$, et ayant une inductance mutuelle $M$, l'énergie magnétique totale est :
+    \begin{equation*}
+        E_m = \frac{1}{2} L_1 I_1^2 + \frac{1}{2} L_2 I_2^2 + M I_1 I_2
+    \end{equation*}
+\end{itemize}
+
+\textbf{Densité volumique d'énergie magnétique :}
+La densité volumique d'énergie magnétique $w_m$ (énergie par unité de volume) dans le vide ou un milieu linéaire homogène isotrope de perméabilité $\mu$ est :
+\begin{equation*}
+    w_m = \frac{\dd{E_m}}{\dd{V}} = \frac{1}{2\mu} \norm{\vect{B}}^2 = \frac{1}{2} \vect{H} \cdot \vect{B}
+\end{equation*}
+Dans le vide, $\mu = \mu_0$.
+
+\textbf{Inégalité $M^2 < L_1 L_2$ pour deux bobines couplées :}
+L'énergie magnétique emmagasinée dans le système de deux bobines doit toujours être positive ou nulle :
+\begin{equation*}
+    E_m = \frac{1}{2} L_1 I_1^2 + \frac{1}{2} L_2 I_2^2 + M I_1 I_2 \ge 0
+\end{equation*}
+Considérons l'expression comme un polynôme du second degré en $I_1$ pour un $I_2$ donné. Pour que ce polynôme soit toujours positif, son discriminant réduit doit être négatif ou nul (si $I_2 \ne 0$).
+Multiplions par $2$ et réarrangeons :
+\begin{equation*}
+    L_1 I_1^2 + 2 M I_1 I_2 + L_2 I_2^2 \ge 0
+\end{equation*}
+Si $I_2=0$, $L_1 I_1^2 \ge 0$, ce qui est vrai car $L_1 \ge 0$.
+Si $I_2 \ne 0$, posons $x = I_1 / I_2$. L'inégalité devient :
+\begin{equation*}
+    L_1 x^2 + 2 M x + L_2 \ge 0
+\end{equation*}
+Pour que ce trinôme du second degré en $x$ soit toujours positif (ou nul), son discriminant $\Delta'$ doit être négatif ou nul :
+\begin{equation*}
+    \Delta' = M^2 - L_1 L_2 \le 0
+\end{equation*}
+Donc, $M^2 \le L_1 L_2$.
+En pratique, le cas d'égalité $M^2 = L_1 L_2$ correspond au couplage parfait, qui n'est jamais atteint idéalement. C'est pourquoi on écrit souvent $M^2 < L_1 L_2$ pour un couplage partiel.
+
+\textbf{Forces de Laplace :}
+La force de Laplace est la force électromagnétique exercée sur un courant électrique dans un champ magnétique.
+\begin{itemize}
+    \item \textbf{Sur un élément de courant :} Pour un élément de courant $\dd{\vect{l}}$ parcouru par un courant $I$ dans un champ magnétique $\vect{B}$, la force élémentaire est :
+    \begin{equation*}
+        \dd{\vect{F}} = I \, \dd{\vect{l}} \times \vect{B}
+    \end{equation*}
+    \item \textbf{Sur un volume de courant :} Pour une distribution volumique de courant de densité $\vect{J}$ dans un volume $\dd{V}$, la force élémentaire est :
+    \begin{equation*}
+        \dd{\vect{F}} = \vect{J} \times \vect{B} \, \dd{V}
+    \end{equation*}
+    La force totale est obtenue par intégration sur le volume considéré.
+\end{itemize}
+
+\subsection{Questions de cours sur la diffusion thermique}
+
+\textbf{Établissement de l'équation de diffusion thermique avec un terme source :}
+L'équation de diffusion thermique découle du premier principe de la thermodynamique appliqué localement et de la loi de Fourier.
+\begin{itemize}
+    \item \textbf{Bilan d'énergie local :} Pour un volume élémentaire $\dd{V}$, la variation de l'énergie interne s'écrit :
+    \begin{equation*}
+        \rho c_p \frac{\partial T}{\partial t} = - \diver \vect{j_q} + P_v
+    \end{equation*}
+    où $\rho$ est la masse volumique, $c_p$ la capacité thermique massique à pression constante, $\vect{j_q}$ le vecteur densité de flux thermique et $P_v$ la puissance volumique de sources de chaleur (terme source).
+    \item \textbf{Loi de Fourier :} Elle relie le flux thermique au gradient de température :
+    \begin{equation*}
+        \vect{j_q} = - \lambda \vect{\nabla} T
+    \end{equation*}
+    où $\lambda$ est la conductivité thermique.
+    \item \textbf{Combinaison des deux :} En substituant la loi de Fourier dans le bilan d'énergie :
+    \begin{equation*}
+        \rho c_p \frac{\partial T}{\partial t} = - \diver (-\lambda \vect{\nabla} T) + P_v = \diver (\lambda \vect{\nabla} T) + P_v
+    \end{equation*}
+    Si la conductivité thermique $\lambda$ est constante et uniforme, on peut la sortir de la divergence :
+    \begin{equation*}
+        \rho c_p \frac{\partial T}{\partial t} = \lambda \Delta T + P_v
+    \end{equation*}
+    En divisant par $\rho c_p$ et en posant la diffusivité thermique $D_{th} = \frac{\lambda}{\rho c_p}$ :
+    \begin{equation*}
+        \frac{\partial T}{\partial t} = D_{th} \Delta T + \frac{P_v}{\rho c_p}
+    \end{equation*}
+    C'est l'\textbf{équation de la chaleur} ou \textbf{équation de diffusion thermique}.
+
+    Le laplacien $\Delta T$ dépend du système de coordonnées :
+    \begin{enumerate}[label=\arabic*)]
+        \item \textbf{Diffusion unidirectionnelle en coordonnées cartésiennes (selon $x$) :}
+        Le laplacien se réduit à $\Delta T = \frac{\partial^2 T}{\partial x^2}$.
+        \begin{equation*}
+            \frac{\partial T}{\partial t} = D_{th} \frac{\partial^2 T}{\partial x^2} + \frac{P_v}{\rho c_p}
+        \end{equation*}
+        \item \textbf{Diffusion radiale en coordonnées cylindriques (selon $r$) :}
+        Le laplacien se réduit à $\Delta T = \frac{1}{r} \frac{\partial}{\partial r}\left(r \frac{\partial T}{\partial r}\right)$.
+        \begin{equation*}
+            \frac{\partial T}{\partial t} = D_{th} \frac{1}{r} \frac{\partial}{\partial r}\left(r \frac{\partial T}{\partial r}\right) + \frac{P_v}{\rho c_p}
+        \end{equation*}
+        \item \textbf{Diffusion radiale en coordonnées sphériques (selon $r$) :}
+        Le laplacien se réduit à $\Delta T = \frac{1}{r^2} \frac{\partial}{\partial r}\left(r^2 \frac{\partial T}{\partial r}\right)$.
+        \begin{equation*}
+            \frac{\partial T}{\partial t} = D_{th} \frac{1}{r^2} \frac{\partial}{\partial r}\left(r^2 \frac{\partial T}{\partial r}\right) + \frac{P_v}{\rho c_p}
+        \end{equation*}
+    \end{enumerate}
+\end{itemize}
+
+\section{Notions clés à retenir}
+\begin{itemize}
+    \item \textbf{Chimie - Optimisation :} La constante d'équilibre $K^\circ$ dépend uniquement de la température (Loi de Van't Hoff). Le quotient réactionnel $Q_r$ est modifié par concentrations/pressions (Loi de Le Châtelier). Le critère d'évolution est $\Delta_r G \dd{\xi} < 0$.
+    \item \textbf{ARQS magnétique :} Valide si les courants de déplacement $\frac{\partial \vect{D}}{\partial t}$ sont négligeables devant les courants de conduction $\vect{J}$. Permet d'utiliser les relations de la magnétostatique à chaque instant, pour les champs magnétiques. Conditions : $L \ll cT$ (dimensions du système petites devant la longueur d'onde caractéristique).
+    \item \textbf{Loi de Faraday-Lenz :} $\rot \vect{E} = - \frac{\partial \vect{B}}{\partial t}$ et $e_{\text{ind}} = - \frac{\dd{\Phi}}{\dd{t}}$. Le signe moins est crucial (loi de Lenz).
+    \item \textbf{Courants de Foucault et feuilletage :} Les courants de Foucault sont des boucles de courant induites dans les conducteurs massifs soumis à un champ magnétique variable. Ils dissipent de l'énergie par effet Joule. Le feuilletage (utilisation de fines lamelles isolées) permet de réduire les pertes par Foucault en diminuant l'amplitude des boucles de courant et en augmentant leur résistance.
+    \item \textbf{Énergie magnétique et couplage :} L'énergie magnétique d'une bobine est $E_m = \frac{1}{2} L I^2$. Pour deux bobines couplées, $E_m = \frac{1}{2} L_1 I_1^2 + \frac{1}{2} L_2 I_2^2 + M I_1 I_2$. L'inégalité $M^2 \le L_1 L_2$ est une conséquence de la positivité de l'énergie.
+    \item \textbf{Équation de diffusion thermique :} $\rho c_p \frac{\partial T}{\partial t} = \diver (\lambda \vect{\nabla} T) + P_v$. Si $\lambda$ est constante, $\frac{\partial T}{\partial t} = D_{th} \Delta T + \frac{P_v}{\rho c_p}$. Connaître l'expression du laplacien $\Delta T$ dans les coordonnées cartésiennes, cylindriques et sphériques est fondamental.
+\end{itemize}
+
+\section{Erreurs fréquentes}
+\begin{itemize}
+    \item \textbf{Chimie - $K^\circ$ vs $Q_r$ :} Confondre la constante d'équilibre $K^\circ$ (qui dépend de $T$) et le quotient réactionnel $Q_r$ (qui dépend des concentrations/pressions à l'instant considéré). $K^\circ$ est une grandeur d'équilibre, $Q_r$ une grandeur à tout instant.
+    \item \textbf{ARQS magnétique :} Oublier la condition de validité $L \ll cT$ ou ne pas savoir l'expliquer. Confondre ARQS magnétique et ARQS électrique (où le champ magnétique est quasi-stationnaire).
+    \item \textbf{Loi de Faraday :} Oublier le signe moins dans la loi de Faraday-Lenz. Ne pas comprendre le sens physique (loi de Lenz).
+    \item \textbf{Énergie magnétique :} Oublier le terme de couplage $M I_1 I_2$ dans l'énergie de deux bobines. Ne pas savoir démontrer l'inégalité $M^2 \le L_1 L_2$.
+    \item \textbf{Courants de Foucault :} Décrire de manière imprécise la géométrie des courants ou le mécanisme du feuilletage. Par exemple, dire que le feuilletage bloque les courants plutôt que de réduire leur amplitude et augmenter leur résistance.
+    \item \textbf{Équation de la chaleur :} Erreur dans l'expression du Laplacien pour les coordonnées cylindriques ou sphériques. Oublier le terme source $P_v$ ou la diffusivité thermique $D_{th}$.
+    \item \textbf{Accents en mode mathématique :} Utiliser des accents (é, è, à...) dans les indices ou exposants des symboles mathématiques (ex: $I_{enlac\text{é}}$ au lieu de $I_{\text{enlace}}$). Il faut utiliser `\text{...}` pour le texte dans les formules.
+    \item \textbf{Syntaxe LaTeX :} Erreurs dans la commande `\textbf{}` (par exemple, toujours mettre les accolades correctement apres textbf).
+\end{itemize}
+
+\end{document}
